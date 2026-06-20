@@ -34,9 +34,9 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
 
   return (
     <div className={`glass-panel ${styles.uploadCard}`}>
-      <h2 className={styles.title}>Initialize System</h2>
+      <h2 className={styles.title}>INITIALIZE PRISM</h2>
       <p className={styles.subtitle}>
-        Provide your base parameters to start the SAMAS core analysis.
+        Provide your base parameters to start the PRISM core identity extraction.
       </p>
 
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -61,8 +61,8 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
           ) : (
             <div className={styles.dropPrompt}>
               <span className={styles.uploadIcon}>+</span>
-              <p>Drag and drop your resume</p>
-              <span className={styles.browseBtn}>PDF or DOCX</span>
+              <p>Drag and drop your base identity file</p>
+              <span className={styles.browseBtn}>Browse Files</span>
             </div>
           )}
         </div>
@@ -115,12 +115,12 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
           )}
         </div>
 
-        <button
-          type="submit"
+        <button 
+          type="submit" 
+          className={`btn-primary ${styles.submitBtn}`} 
           disabled={!file || isLoading}
-          className={`btn-primary ${styles.submitBtn}`}
         >
-          {isLoading ? 'Booting Neural Pathways...' : 'Initialize Analysis'}
+          {isLoading ? 'Processing...' : 'EXECUTE PRISM EXTRACTION'}
         </button>
       </form>
     </div>

@@ -2,12 +2,12 @@
   padding: 3rem;
   width: 100%;
   max-width: 700px;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
@@ -19,20 +19,21 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--text-primary);
-  opacity: 0.1;
+  background: #d47a43; /* PRISM Color */
+  opacity: 0.5;
 }
 
 .title {
   margin-bottom: 0.5rem;
   font-family: var(--font-display);
   font-size: 2rem;
-  color: #1a1a24;
+  color: #ffffff;
   text-align: center;
+  letter-spacing: 0.05em;
 }
 
 .subtitle {
-  color: #4a4a55;
+  color: #a0a0ab;
   margin-bottom: 2rem;
   font-weight: 400;
   text-align: center;
@@ -49,23 +50,23 @@
 }
 
 .dropZone {
-  border: 2px dashed rgba(26, 26, 36, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
   padding: 3rem 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .dropZone:hover {
-  border-color: #1a1a24;
-  background: rgba(255, 255, 255, 0.8);
+  border-color: #d47a43;
+  background: rgba(212, 122, 67, 0.05);
 }
 
 .hasFile {
-  border-color: var(--accent-emerald);
+  border-color: #d47a43;
   border-style: solid;
-  background: rgba(16, 185, 129, 0.05);
+  background: rgba(212, 122, 67, 0.05);
 }
 
 .dropPrompt {
@@ -73,16 +74,17 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  color: #d1d1d6;
 }
 
 .uploadIcon {
   font-size: 3rem;
   opacity: 0.6;
-  color: #1a1a24;
+  color: #ffffff;
 }
 
 .browseBtn {
-  color: #1a1a24;
+  color: #d47a43;
   font-weight: 600;
   text-decoration: underline;
 }
@@ -93,7 +95,7 @@
   justify-content: center;
   gap: 1rem;
   font-size: 1.25rem;
-  color: var(--accent-emerald);
+  color: #d47a43;
 }
 
 .inputGroup {
@@ -105,7 +107,7 @@
 }
 
 .inputGroup label {
-  color: #4a4a55;
+  color: #a0a0ab;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -115,7 +117,7 @@
   width: 100%;
   padding: 1rem;
   font-size: 1.1rem;
-  background: #1a1a24;
+  background: #d47a43;
   color: white;
   border-radius: var(--radius-md);
   font-weight: 600;
@@ -130,8 +132,8 @@
   margin-top: 0.5rem;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .advancedToggle {
@@ -139,7 +141,7 @@
   padding: 1rem;
   background: transparent;
   border: none;
-  color: #1a1a24;
+  color: #d1d1d6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,17 +152,17 @@
 }
 
 .advancedToggle:hover {
-  background: rgba(26, 26, 36, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .chevron {
   font-size: 0.8rem;
-  color: #1a1a24;
+  color: #a0a0ab;
 }
 
 .advancedPanel {
   padding: 1rem;
-  border-top: 1px solid rgba(26, 26, 36, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -168,7 +170,7 @@
 }
 
 .hintText {
-  color: #666677;
+  color: #8c7b65;
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;

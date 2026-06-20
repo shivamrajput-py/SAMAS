@@ -14,16 +14,16 @@
   flex: 1;
   padding: 2rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .statCard h3 {
-  color: #4a4a55;
+  color: #a0a0ab;
   font-size: 1rem;
   font-family: var(--font-sans);
   margin-bottom: 0.5rem;
@@ -40,7 +40,7 @@
 }
 
 .statLabel {
-  color: #666677;
+  color: #a0a0ab;
   font-size: 0.85rem;
   margin-top: 0.25rem;
 }
@@ -56,7 +56,7 @@
 .tab {
   background: transparent;
   border: none;
-  color: #666677;
+  color: #a0a0ab;
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -67,11 +67,11 @@
 }
 
 .tab:hover {
-  color: #1a1a24;
+  color: #ffffff;
 }
 
 .activeTab {
-  color: #1a1a24;
+  color: #ffffff;
   border-bottom-color: var(--accent-cyan);
 }
 
@@ -81,23 +81,23 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  background: rgba(10, 10, 15, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
 }
 
 .filtersBar input[type="text"] {
   max-width: 250px;
-  background: #ffffff;
-  color: #1a1a24;
-  border: 1px solid rgba(26, 26, 36, 0.2);
+  background: rgba(10, 10, 15, 0.6);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .checkboxLabel {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #4a4a55;
+  color: #d1d1d6;
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -112,15 +112,15 @@
 
 .jobCard {
   padding: 2.5rem;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
-  color: #1a1a24;
+  color: #ffffff;
 }
 
 .jobHeader {
@@ -137,7 +137,7 @@
 }
 
 .jobCompany {
-  color: #4a4a55;
+  color: #d1d1d6;
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -157,7 +157,7 @@
 
 .circleBg {
   fill: none;
-  stroke: rgba(26, 26, 36, 0.1);
+  stroke: rgba(255, 255, 255, 0.1);
   stroke-width: 3.8;
 }
 
@@ -174,7 +174,7 @@
 }
 
 .percentage {
-  fill: #1a1a24;
+  fill: #ffffff;
   font-family: var(--font-display);
   font-size: 0.6em;
   text-anchor: middle;
@@ -190,29 +190,29 @@
 }
 
 .ghostWarning strong {
-  color: #d97706; /* Darker amber for light mode */
+  color: #f59e0b; /* Lighter amber for dark mode */
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .gapAnalysis {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.4);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(26, 26, 36, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .gapAnalysis h4 {
   margin-bottom: 0.5rem;
-  color: #1a1a24;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .gapSummary {
   margin-bottom: 1.5rem;
   line-height: 1.5;
-  color: #4a4a55;
+  color: #d1d1d6;
 }
 
 .skillsLists {
@@ -256,27 +256,27 @@
 }
 
 .tagMatched {
-  background: rgba(16, 185, 129, 0.1);
-  color: #059669; /* Darker emerald */
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399; /* Lighter emerald */
   padding: 0.2rem 0.6rem;
   border-radius: 100px;
   font-size: 0.85rem;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   font-weight: 600;
 }
 
 .tagMissing {
-  background: rgba(244, 63, 94, 0.1);
-  color: #e11d48; /* Darker rose */
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185; /* Lighter rose */
   padding: 0.2rem 0.6rem;
   border-radius: 100px;
   font-size: 0.85rem;
-  border: 1px solid rgba(244, 63, 94, 0.2);
+  border: 1px solid rgba(244, 63, 94, 0.3);
   font-weight: 600;
 }
 
 .tagNone {
-  color: #666677;
+  color: #a0a0ab;
   font-size: 0.85rem;
   font-style: italic;
 }
@@ -290,8 +290,8 @@
   text-decoration: none;
   font-size: 0.95rem;
   padding: 0.6rem 1.25rem;
-  background: #1a1a24;
-  color: white;
+  background: #ffffff;
+  color: #1a1a24;
   border-radius: var(--radius-md);
   font-weight: 600;
   transition: opacity 0.2s;
@@ -304,10 +304,10 @@
 .emptyState {
   text-align: center;
   padding: 4rem;
-  color: #666677;
-  background: rgba(0, 0, 0, 0.04);
+  color: #a0a0ab;
+  background: rgba(10, 10, 15, 0.4);
   border-radius: var(--radius-lg);
-  border: 1px dashed rgba(26, 26, 36, 0.2);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 760px) {

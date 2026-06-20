@@ -1,12 +1,12 @@
 .container {
   padding: 2.5rem;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 4px solid var(--agent-color, #d47a43);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
@@ -28,24 +28,24 @@
 
 .title {
   font-size: 1.5rem;
-  color: #1a1a24;
+  color: #ffffff;
   font-weight: 700;
 }
 
 .summaryBox {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
   padding: 1.5rem;
   border-radius: var(--radius-md);
   margin-bottom: 2rem;
-  color: #4a4a55;
+  color: #d1d1d6;
   line-height: 1.6;
-  border: 1px solid rgba(26, 26, 36, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skillsTitle {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #1a1a24;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -56,8 +56,8 @@
 }
 
 .skillCard {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: var(--radius-md);
   display: flex;
@@ -73,7 +73,7 @@
 
 .skillName {
   font-weight: 600;
-  color: #1a1a24;
+  color: #ffffff;
 }
 
 .skillScore {
@@ -84,7 +84,7 @@
 
 .progressBar {
   height: 6px;
-  background: rgba(26, 26, 36, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -105,8 +105,8 @@
 
 .proofs {
   font-size: 0.75rem;
-  color: #666677;
-  background: rgba(26, 26, 36, 0.03);
+  color: #a0a0ab;
+  background: rgba(255, 255, 255, 0.05);
   padding: 0.5rem;
   border-radius: var(--radius-sm);
   margin-top: 0.25rem;
@@ -120,16 +120,16 @@
   width: 100%;
   padding: 0.75rem;
   background: transparent;
-  border: 1px solid rgba(26, 26, 36, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-md);
-  color: #1a1a24;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .seeMoreBtn:hover {
-  background: rgba(26, 26, 36, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .modalOverlay {
@@ -150,15 +150,15 @@
 }
 
 .modalContent {
-  background: #d5d2cc;
+  background: #1a1a24;
   width: 100%;
   max-width: 900px;
   max-height: 80vh;
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   overflow-y: auto;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   animation: slideUp 0.3s ease forwards;
 }
@@ -175,7 +175,7 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #1a1a24;
+  color: #ffffff;
   padding: 0.5rem;
   border-radius: 50%;
   display: flex;
@@ -185,7 +185,7 @@
 }
 
 .closeBtn:hover {
-  background: rgba(26, 26, 36, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes fadeIn {

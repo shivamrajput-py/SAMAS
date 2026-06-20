@@ -67,122 +67,6 @@ const AGENTS: Agent[] = [
   },
 ];
 
-// ─── Particle colors from the warm palette ───
-const PARTICLE_COLORS = [
-  '#d47a43', // amber
-  '#8c7b65', // sage
-  '#b8a99a', // sand
-  '#c2a886', // warm gold
-  '#a85642', // brick
-  '#e6e4df', // warm stone
-];
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-  color: string;
-  opacity: number;
-  baseOpacity: number;
-  pulseSpeed: number;
-  pulsePhase: number;
-}
-
-function createParticles(width: number, height: number, count: number): Particle[] {
-  const particles: Particle[] = [];
-  for (let i = 0; i < count; i++) {
-    const baseOpacity = 0.08 + Math.random() * 0.14; // 0.08 – 0.22
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.15,
-      vy: -(0.08 + Math.random() * 0.2), // gentle drift upward
-      radius: 0.8 + Math.random() * 1.2,
-      color: PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
-      opacity: baseOpacity,
-      baseOpacity,
-      pulseSpeed: 0.3 + Math.random() * 0.7,
-      pulsePhase: Math.random() * Math.PI * 2,
-    });
-  }
-  return particles;
-}
-
-// ─── Floating Particles Background ───
-function VoidParticles() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
-  const rafRef = useRef<number>(0);
-
-  const animate = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const { width, height } = canvas;
-    ctx.clearRect(0, 0, width, height);
-
-    const time = performance.now() / 1000;
-
-    for (const p of particlesRef.current) {
-      // move
-      p.x += p.vx;
-      p.y += p.vy;
-
-      // wrap edges
-      if (p.y < -10) p.y = height + 10;
-      if (p.x < -10) p.x = width + 10;
-      if (p.x > width + 10) p.x = -10;
-
-      // gentle opacity pulse
-      p.opacity = p.baseOpacity + Math.sin(time * p.pulseSpeed + p.pulsePhase) * 0.04;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = Math.max(0, Math.min(p.opacity, 1));
-      ctx.fill();
-    }
-
-    ctx.globalAlpha = 1;
-    rafRef.current = requestAnimationFrame(animate);
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const resizeCanvas = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (!rect) return;
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-      // Re-create particles on resize to fill new space
-      particlesRef.current = createParticles(canvas.width, canvas.height, 40);
-    };
-
-    resizeCanvas();
-    rafRef.current = requestAnimationFrame(animate);
-
-    window.addEventListener('resize', resizeCanvas);
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, [animate]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className={styles.particleCanvas}
-      aria-hidden="true"
-    />
-  );
-}
-
 // ─── Agent Card ───
 function AgentCard({ agent, index }: { agent: Agent; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -377,9 +261,6 @@ export default function AgentShowcase() {
   return (
     <section className={styles.section} id="agents" ref={containerRef}>
       
-      {/* Enhancement 1: Sparse floating particles */}
-      <VoidParticles />
-
       {/* Background ambient light */}
       <div className={styles.ambientGlow} />
 

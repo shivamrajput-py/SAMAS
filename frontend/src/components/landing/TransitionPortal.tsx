@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,120 +8,172 @@ import styles from './TransitionPortal.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ==========================================
+// SCRAMBLER TEXT COMPONENT
+// ==========================================
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*!<>{}[]';
+
+function ScramblerText({ text, progress, className }: { text: string; progress: number; className?: string }) {
+  const [displayText, setDisplayText] = useState(text);
+
+  useEffect(() => {
+    if (progress <= 0) {
+      setDisplayText('');
+      return;
+    }
+    
+    if (progress >= 1) {
+      setDisplayText(text);
+      return;
+    }
+
+    // Scramble logic
+    const resolvedLength = Math.floor(text.length * progress);
+    let scrambled = '';
+    
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] === ' ') {
+        scrambled += ' ';
+      } else if (i < resolvedLength) {
+        scrambled += text[i];
+      } else {
+        scrambled += CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+    }
+    
+    setDisplayText(scrambled);
+  }, [text, progress]);
+
+  return <div className={className}>{displayText}</div>;
+}
+
+// ==========================================
+// MAIN PORTAL COMPONENT
+// ==========================================
 export default function TransitionPortal() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
-  const text1Ref = useRef<HTMLDivElement>(null);
-  const text2Ref = useRef<HTMLDivElement>(null);
-  const text3Ref = useRef<HTMLDivElement>(null);
   const crackRef = useRef<HTMLDivElement>(null);
+
+  // State for text scrambling progress
+  const [prog1, setProg1] = useState(0);
+  const [prog2, setProg2] = useState(0);
+  const [prog3, setProg3] = useState(0);
 
   useGSAP(() => {
     if (!sectionRef.current || !circleRef.current) return;
 
-    // We target the #hero-m from the SamasHero component
     const mElement = document.getElementById('hero-m');
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
         start: 'top top',
-        end: '+=200%',     // Long scroll distance for pinned section
-        scrub: 1.5,        // Slower scrub for more control
-        pin: true,          // PIN the section!
+        end: '+=150%',     // Shortened scroll distance for faster pacing
+        scrub: 1.5,
+        pin: true,
         anticipatePin: 1,
       },
     });
 
-    // 0.0 - 0.15: M letter shrinks and fades
+    // 0.0 - 0.1: M letter shrinks and fades
     if (mElement) {
       tl.to(mElement, {
-        scale: 0.4,
+        scale: 0.2,
         opacity: 0,
-        duration: 0.15,
+        duration: 0.1,
         ease: 'power2.in',
       }, 0);
     }
 
-    // 0.05 - 0.5: Void circle expands slowly
+    // 0.05 - 0.5: Expand the hole in the light overlay to reveal the void dimension
     tl.fromTo(circleRef.current,
-      { clipPath: 'circle(0% at 50% 50%)' },
-      { clipPath: 'circle(160% at 50% 50%)', duration: 0.5, ease: 'power2.inOut' },
+      { '--hole-size': '0%' },
+      { '--hole-size': '150%', duration: 0.45, ease: 'power2.inOut' },
       0.05
     );
 
-    // 0.1: Horizontal crack/light streak flashes
+    // 0.1: Optical shatter flare
     if (crackRef.current) {
       tl.fromTo(crackRef.current,
-        { scaleX: 0, opacity: 0 },
-        { scaleX: 1, opacity: 1, duration: 0.1, ease: 'power4.out' },
+        { scaleX: 0, opacity: 0, height: '2px' },
+        { scaleX: 1.5, opacity: 1, height: '8px', duration: 0.1, ease: 'power4.out' },
         0.1
       );
       tl.to(crackRef.current,
-        { opacity: 0, duration: 0.15 },
+        { opacity: 0, height: '0px', duration: 0.15 },
         0.25
       );
     }
 
-    // Sequential narrative text
-    // Text 1: "[ SYSTEM DIRECTIVE ]" — 0.15 to 0.35
-    if (text1Ref.current) {
-      tl.fromTo(text1Ref.current,
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.1, ease: 'power2.out' },
-        0.15
-      );
-      tl.to(text1Ref.current,
-        { opacity: 0, y: -15, duration: 0.1 },
-        0.3
-      );
-    }
+    // Text 1: SYSTEM DIRECTIVE
+    tl.to({ val: 0 }, {
+      val: 1,
+      duration: 0.15,
+      ease: 'none',
+      onUpdate: function() { setProg1(this.targets()[0].val); }
+    }, 0.2);
+    tl.to({ val: 1 }, {
+      val: -0.1,
+      duration: 0.1,
+      ease: 'none',
+      onUpdate: function() { setProg1(this.targets()[0].val); }
+    }, 0.4);
 
-    // Text 2: "[ ENTERING THE VOID ]" — 0.35 to 0.55
-    if (text2Ref.current) {
-      tl.fromTo(text2Ref.current,
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.1, ease: 'power2.out' },
-        0.38
-      );
-      tl.to(text2Ref.current,
-        { opacity: 0, y: -15, duration: 0.1 },
-        0.55
-      );
-    }
+    // Text 2: ENTERING THE VOID
+    tl.to({ val: 0 }, {
+      val: 1,
+      duration: 0.15,
+      ease: 'none',
+      onUpdate: function() { setProg2(this.targets()[0].val); }
+    }, 0.45);
+    tl.to({ val: 1 }, {
+      val: -0.1,
+      duration: 0.1,
+      ease: 'none',
+      onUpdate: function() { setProg2(this.targets()[0].val); }
+    }, 0.65);
 
-    // Text 3: "[ AGENTS ONLINE ]" — 0.6 to 0.85
-    if (text3Ref.current) {
-      tl.fromTo(text3Ref.current,
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.1, ease: 'power2.out' },
-        0.62
-      );
-      tl.to(text3Ref.current,
-        { opacity: 0, y: -15, duration: 0.15 },
-        0.8
-      );
-    }
+    // Text 3: AGENTS ONLINE
+    tl.to({ val: 0 }, {
+      val: 1,
+      duration: 0.15,
+      ease: 'none',
+      onUpdate: function() { setProg3(this.targets()[0].val); }
+    }, 0.7);
+    tl.to({ val: 1 }, {
+      val: -0.1,
+      duration: 0.1,
+      ease: 'none',
+      onUpdate: function() { setProg3(this.targets()[0].val); }
+    }, 0.9);
 
   }, { scope: sectionRef });
 
   return (
     <section ref={sectionRef} className={styles.section}>
-      <div ref={circleRef} className={styles.circleBg} />
+      {/* The light overlay with an expanding hole that reveals the void canvas behind it */}
+      <div ref={circleRef} className={styles.solidOverlay} />
       
-      {/* Horizontal mirror crack / light streak */}
+      {/* Dynamic mirror fracture */}
       <div ref={crackRef} className={styles.mirrorCrack} />
 
-      {/* Sequential narrative texts */}
-      <div ref={text1Ref} className={`${styles.text} ${styles.text1}`}>
-        [ SYSTEM DIRECTIVE ]
-      </div>
-      <div ref={text2Ref} className={`${styles.text} ${styles.text2}`}>
-        [ ENTERING THE VOID ]
-      </div>
-      <div ref={text3Ref} className={`${styles.text} ${styles.text3}`}>
-        [ AGENTS ONLINE ]
-      </div>
+      {/* Scrambling Narrative Texts */}
+      <ScramblerText 
+        text="[ SYSTEM DIRECTIVE ]" 
+        progress={prog1} 
+        className={`${styles.text} ${styles.text1} ${prog1 > 0 && prog1 < 1 ? styles.textActive : ''}`} 
+      />
+      <ScramblerText 
+        text="[ ENTERING THE VOID ]" 
+        progress={prog2} 
+        className={`${styles.text} ${styles.text2} ${prog2 > 0 && prog2 < 1 ? styles.textActive : ''}`} 
+      />
+      <ScramblerText 
+        text="[ AGENTS ONLINE ]" 
+        progress={prog3} 
+        className={`${styles.text} ${styles.text3} ${prog3 > 0 && prog3 < 1 ? styles.textActive : ''}`} 
+      />
     </section>
   );
 }

@@ -7,9 +7,10 @@ import timelineStyles from '@/components/AgentTimeline.module.css';
 import ResumeUpload from '@/components/ResumeUpload';
 import InterviewUI, { Question } from '@/components/InterviewUI';
 import ResultsDashboard from '@/components/ResultsDashboard';
-import PrismResults from '@/components/PrismResults';
 import OracleResults from '@/components/OracleResults';
 import Link from 'next/link';
+import VoidDimension from '@/components/landing/VoidDimension';
+import TerminalLogger, { LogEntry } from '@/components/TerminalLogger';
 
 type FlowState = 'upload' | 'loading_profile' | 'interview' | 'evaluating' | 'title_select' | 'searching' | 'results' | 'error';
 
@@ -24,9 +25,21 @@ export default function FindPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [, setSuggestedTitles] = useState<string[]>([]);
   const [customTitles, setCustomTitles] = useState<string>('');
+  const [searchLocation, setSearchLocation] = useState<string>('Remote');
   const [matchedJobs, setMatchedJobs] = useState<any[]>([]);
   const [droppedJobs, setDroppedJobs] = useState<any[]>([]);
   const [activeAgentId, setActiveAgentId] = useState<string>('profile');
+  
+  const [terminalLogs, setTerminalLogs] = useState<LogEntry[]>([]);
+  
+  const addLog = (agent: string, message: string) => {
+    setTerminalLogs(prev => [...prev, {
+      id: Math.random().toString(36).substr(2, 9),
+      agent,
+      message,
+      timestamp: new Date()
+    }]);
+  };
 
   // BYOK State
   const [apiKey, setApiKey] = useState<string>('');
@@ -66,21 +79,38 @@ export default function FindPage() {
       
       let finalProfile = null;
       let finalThreadId = null;
+      let buffer = '';
       
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n');
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || ''; // Keep the last incomplete line in the buffer
         
         for (const line of lines) {
-          if (line.startsWith('data: ')) {
+          const trimmedLine = line.trim();
+          if (trimmedLine.startsWith('data: ')) {
             try {
-              const data = JSON.parse(line.substring(6));
+              const data = JSON.parse(trimmedLine.substring(6));
               if (data.type === 'error') {
                 throw new Error(data.message);
+              } else if (data.type === 'start') {
+                addLog('PRISM', 'Initializing identity extraction protocol...');
+              } else if (data.type === 'progress') {
+                const node = data.node || '';
+                let msg = data.message;
+                if (!msg) {
+                  if (node === 'parser') msg = 'Parsing raw document arrays...';
+                  else if (node === 'skill_extractor') msg = 'Extracting latent capabilities and skills...';
+                  else if (node === 'proof_analyzer') msg = 'Cross-referencing claims and generating proof scores...';
+                  else if (node === 'formatter') msg = 'Compiling unified semantic profile...';
+                  else msg = `Processing node: ${node}...`;
+                }
+                addLog('PRISM', msg);
               } else if (data.type === 'complete') {
+                addLog('PRISM', 'Identity extraction complete.');
                 finalProfile = data.user_profile;
                 finalThreadId = data.thread_id;
                 setProfile(data.user_profile);
@@ -106,6 +136,7 @@ export default function FindPage() {
   // Phase 2a: Get Questions
   const fetchQuestions = async (userProfile: any, key: string, model: string) => {
     setActiveAgentId('interview');
+    setFlowState('interview');
     try {
       const res = await fetch(`${API_BASE_URL}/api/interview/start`, {
         method: 'POST',
@@ -186,6 +217,7 @@ export default function FindPage() {
         body: JSON.stringify({ 
           thread_id: threadId, 
           selected_titles: titles,
+          location: searchLocation,
           user_profile: profile,
           api_key: apiKey,
           model_name: modelName
@@ -200,25 +232,46 @@ export default function FindPage() {
       
       let finalMatchedJobs = null;
       let finalDroppedJobs = null;
+      let buffer = '';
       
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n');
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || ''; // Keep the last incomplete line
         
         for (const line of lines) {
-          if (line.startsWith('data: ')) {
+          const trimmedLine = line.trim();
+          if (trimmedLine.startsWith('data: ')) {
             try {
-              const data = JSON.parse(line.substring(6));
+              const data = JSON.parse(trimmedLine.substring(6));
               if (data.type === 'error') {
                 throw new Error(data.message);
               } else if (data.type === 'progress') {
-                if (data.node.includes('search')) setActiveAgentId('search');
-                if (data.node.includes('analyzer')) setActiveAgentId('analyzer');
-                if (data.node.includes('matcher')) setActiveAgentId('matcher');
+                const node = data.node || '';
+                
+                let agentName = 'SYSTEM';
+                if (node.includes('search')) {
+                  setActiveAgentId('search');
+                  agentName = 'RADAR';
+                } else if (node.includes('analyzer')) {
+                  setActiveAgentId('analyzer');
+                  agentName = 'CORTEX';
+                } else if (node.includes('matcher') || node.includes('ranking')) {
+                  setActiveAgentId('matcher');
+                  agentName = 'NEXUS';
+                }
+
+                let msg = data.message;
+                if (!msg) {
+                  msg = `Processing step: ${node}...`;
+                }
+                
+                addLog(agentName, msg);
               } else if (data.type === 'complete') {
+                addLog('NEXUS', 'Match vectors finalized.');
                 finalMatchedJobs = data.matched_jobs;
                 finalDroppedJobs = data.dropped_jobs;
               }
@@ -284,8 +337,8 @@ export default function FindPage() {
   );
 
   return (
-    <main className={styles.container}>
-      <div className={styles.ambientGlow} />
+    <VoidDimension>
+      <main className={styles.container}>
 
       <div className={styles.cornerHUD}>
         <p className={styles.hudTopLeft}>SAMAS</p>
@@ -313,9 +366,14 @@ export default function FindPage() {
               </div>
               <div className={styles.workspaceCol}>
                 {flowState === 'upload' && <ResumeUpload onSubmit={handleUpload} isLoading={false} />}
-                {flowState === 'loading_profile' && renderLoadingIndicator("Extracting profile text and computing initial proof scores...")}
+                {flowState === 'loading_profile' && <TerminalLogger logs={terminalLogs} title="PRISM: IDENTITY EXTRACTION" />}
                 {flowState !== 'upload' && flowState !== 'loading_profile' && profile && (
-                  <PrismResults profile={profile} condensed={true} />
+                  <div style={{ padding: '2rem', background: 'rgba(10, 10, 15, 0.4)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                    <h3 style={{ color: '#ffffff', marginBottom: '1rem' }}>Identity Extracted</h3>
+                    <p style={{ color: '#d1d1d6', lineHeight: '1.6' }}>
+                      {profile.professional_summary}
+                    </p>
+                  </div>
                 )}
               </div>
             </div>
@@ -341,23 +399,40 @@ export default function FindPage() {
               </div>
               <div className={styles.workspaceCol}>
                 {flowState === 'title_select' && (
-                  <div className={styles.darkCard}>
-                    <h2 className={styles.cardTitle}>Job Title Selection</h2>
-                    <p style={{ color: '#4a4a55', marginBottom: '1.5rem' }}>
-                      Based on your verified profile, we suggest the following titles. You can edit them before we begin the massive parallel search.
+                  <div className={styles.darkCard} style={{ background: 'rgba(10, 10, 15, 0.6)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <h2 style={{ color: '#ffffff', marginBottom: '1rem', fontSize: '1.5rem' }}>Set Target Parameters</h2>
+                    <p style={{ color: '#a0a0ab', marginBottom: '1.5rem', lineHeight: '1.5' }}>
+                      I have analyzed your updated profile. Please confirm your target job titles and location before I deploy the sweepers.
                     </p>
-                    <input 
-                      type="text" 
-                      className={styles.titleInput}
-                      value={customTitles}
-                      onChange={(e) => setCustomTitles(e.target.value)}
-                    />
-                    <button className={styles.executeBtn} onClick={handleExecuteSearch}>
-                      Execute Massive Search
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem' }}>
+                      <div>
+                        <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Target Job Titles (comma separated)</label>
+                        <input 
+                          type="text" 
+                          style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px' }}
+                          value={customTitles}
+                          onChange={(e) => setCustomTitles(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Target Location</label>
+                        <input 
+                          type="text" 
+                          style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px' }}
+                          value={searchLocation}
+                          onChange={(e) => setSearchLocation(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <button style={{ width: '100%', padding: '1rem', background: '#ffffff', color: '#1a1a24', fontWeight: 'bold', borderRadius: '6px', border: 'none', cursor: 'pointer' }} onClick={() => {
+                      setTerminalLogs([]);
+                      handleExecuteSearch();
+                    }}>
+                      EXECUTE SWEEP
                     </button>
                   </div>
                 )}
-                {flowState === 'searching' && activeAgentId === 'search' && renderLoadingIndicator("Fetching jobs via SerpAPI and running deep deduplication...")}
+                {flowState === 'searching' && activeAgentId === 'search' && <TerminalLogger logs={terminalLogs} title="RADAR: GLOBAL SWEEP" />}
               </div>
             </div>
 
@@ -367,7 +442,7 @@ export default function FindPage() {
                 {renderAgentCard('analyzer', '04', 'CORTEX', 'REQUIREMENT DECODER', 'Breaking down job descriptions into explicit and implicit requirements.', '#3b5a6c', <><span className={timelineStyles.formulaPart}>JD Batch</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Vectors</span></>)}
               </div>
               <div className={styles.workspaceCol}>
-                {flowState === 'searching' && activeAgentId === 'analyzer' && renderLoadingIndicator("LLM extracting explicit and implicit requirements from JD batches...")}
+                {flowState === 'searching' && activeAgentId === 'analyzer' && <TerminalLogger logs={terminalLogs} title="CORTEX: REQUIREMENT DECODING" />}
               </div>
             </div>
 
@@ -377,7 +452,7 @@ export default function FindPage() {
                 {renderAgentCard('matcher', '05', 'NEXUS', 'VECTOR MATCHER', 'Mathematically matching your profile vector against job requirement vectors.', '#5a4661', <><span className={timelineStyles.formulaPart}>Profile Vector</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Ranked Jobs</span></>)}
               </div>
               <div className={styles.workspaceCol}>
-                {flowState === 'searching' && activeAgentId === 'matcher' && renderLoadingIndicator("Computing Pinecone vectors and mathematically ranking final jobs...")}
+                {flowState === 'searching' && activeAgentId === 'matcher' && <TerminalLogger logs={terminalLogs} title="NEXUS: VECTOR MATCHING" />}
               </div>
             </div>
 
@@ -388,6 +463,7 @@ export default function FindPage() {
           </div>
         )}
       </div>
-    </main>
+      </main>
+    </VoidDimension>
   );
 }

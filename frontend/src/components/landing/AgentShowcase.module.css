@@ -1,5 +1,5 @@
 .section {
-  background: var(--void);
+  background: transparent;
   position: relative;
   width: 100%;
   z-index: 4;
@@ -12,13 +12,7 @@
   display: none;
 }
 
-/* Enhancement 1: Particle canvas layer */
-.particleCanvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+/* CSS rules removed because VoidDimension handles background */
 
 .ambientGlow {
   position: absolute;

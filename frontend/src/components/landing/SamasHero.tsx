@@ -328,7 +328,6 @@ export default function SamasHero() {
             <div id="hero-m">
               <div 
                 className={`${styles.centerM} ${booted ? styles.mBooted : ''}`}
-                onMouseEnter={() => setHoverState('none')}
               >
                 <h1 className={styles.mText}>M</h1>
                 {/* Ambient glow ring that breathes */}

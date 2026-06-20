@@ -4,81 +4,115 @@
   height: 100vh;
   overflow: hidden;
   z-index: 3;
-  background: var(--hero-bg);
+  background: transparent;
 }
 
-.circleBg {
+.solidOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--void);
-  clip-path: circle(0% at 50% 50%);
+  background: var(--hero-bg);
+  /* The hole starts at 0% and expands to 150% via GSAP */
+  --hole-size: 0%;
+  mask-image: radial-gradient(circle at 50% 50%, transparent var(--hole-size), black calc(var(--hole-size) + 1px));
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--hole-size), black calc(var(--hole-size) + 1px));
 }
 
-/* Horizontal mirror crack — light streak across center */
+/* The interactive neural canvas */
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Enhanced dynamic mirror fracture */
 .mirrorCrack {
   position: absolute;
   top: 50%;
-  left: 10%;
-  right: 10%;
+  left: 0;
+  right: 0;
   height: 2px;
   z-index: 8;
   transform: translateY(-50%) scaleX(0);
   transform-origin: center;
   background: linear-gradient(
     90deg, 
-    transparent, 
-    rgba(212, 122, 67, 0.3) 20%, 
-    rgba(255, 255, 255, 0.8) 45%, 
+    transparent 0%,
+    rgba(212, 122, 67, 0.4) 15%,
+    rgba(255, 255, 255, 0.9) 45%, 
     rgba(255, 255, 255, 1) 50%, 
-    rgba(255, 255, 255, 0.8) 55%, 
-    rgba(140, 123, 101, 0.3) 80%, 
-    transparent
+    rgba(255, 255, 255, 0.9) 55%, 
+    rgba(140, 123, 101, 0.4) 85%,
+    transparent 100%
   );
   box-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.5),
-    0 0 40px rgba(212, 122, 67, 0.3),
-    0 0 80px rgba(140, 123, 101, 0.15);
+    0 0 30px rgba(255, 255, 255, 0.6),
+    0 0 60px rgba(212, 122, 67, 0.4),
+    0 0 100px rgba(140, 123, 101, 0.3);
   opacity: 0;
   pointer-events: none;
+  /* Adds a chromatic aberration feel */
+  filter: drop-shadow(0 4px 10px rgba(139, 107, 255, 0.5));
 }
 
-/* Narrative text — shared styles */
+/* ==========================================
+   SCRAMBLER TYPOGRAPHY
+   ========================================== */
 .text {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 7;
-  font-family: var(--font-mono);
-  font-size: clamp(14px, 2vw, 20px);
-  letter-spacing: 0.3em;
-  font-weight: 600;
+  z-index: 10;
+  /* Switch from Mono to Display font for impact */
+  font-family: var(--font-display);
+  font-weight: 800;
   text-transform: uppercase;
   white-space: nowrap;
-  opacity: 0;
   text-align: center;
   pointer-events: none;
+  /* Hidden when progress is 0 */
+  display: none;
 }
 
-/* Each text has its own color identity */
+.textActive {
+  display: block;
+}
+
+/* Text 1: The Silver Directive */
 .text1 {
-  color: var(--muted);
-  text-shadow: 0 0 15px rgba(158, 156, 150, 0.3);
+  color: var(--silver);
+  font-size: clamp(32px, 5vw, 64px);
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 0 20px rgba(230, 228, 223, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
+/* Text 2: The Amber Void */
 .text2 {
   color: #d47a43;
-  text-shadow: 0 0 20px rgba(212, 122, 67, 0.4);
-  font-size: clamp(16px, 2.5vw, 24px);
+  font-size: clamp(40px, 7vw, 80px);
+  letter-spacing: 0.2em;
+  text-shadow: 
+    0 0 40px rgba(212, 122, 67, 0.5),
+    0 0 80px rgba(212, 122, 67, 0.2),
+    0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
+/* Text 3: The Sage Awakening */
 .text3 {
   color: #8c7b65;
-  text-shadow: 0 0 20px rgba(140, 123, 101, 0.4);
-  font-size: clamp(18px, 3vw, 28px);
-  font-weight: 700;
-  letter-spacing: 0.4em;
+  font-size: clamp(48px, 9vw, 100px);
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-shadow: 
+    0 0 50px rgba(140, 123, 101, 0.6),
+    0 0 100px rgba(140, 123, 101, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.8);
 }

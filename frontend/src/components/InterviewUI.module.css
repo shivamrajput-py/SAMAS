@@ -2,12 +2,12 @@
   padding: 3rem;
   width: 100%;
   max-width: 800px;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
@@ -17,7 +17,7 @@
 }
 
 .stepIndicator {
-  color: #4a4a55;
+  color: #a0a0ab;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -27,7 +27,7 @@
 
 .progressBar {
   height: 6px;
-  background: rgba(26, 26, 36, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -48,7 +48,7 @@
 
 .badge {
   background: rgba(0, 240, 255, 0.1);
-  color: #008899; /* Darker cyan for light mode */
+  color: #00f0ff; /* Bright cyan for dark mode */
   border: 1px solid rgba(0, 240, 255, 0.3);
   padding: 0.25rem 0.75rem;
   border-radius: 100px;
@@ -63,8 +63,8 @@
 }
 
 .skillTag {
-  background: rgba(26, 26, 36, 0.05);
-  color: #4a4a55;
+  background: rgba(255, 255, 255, 0.05);
+  color: #d1d1d6;
   padding: 0.25rem 0.75rem;
   border-radius: 100px;
   font-size: 0.8rem;
@@ -73,7 +73,7 @@
 .questionText {
   font-size: 1.25rem;
   line-height: 1.5;
-  color: #1a1a24;
+  color: #ffffff;
   margin-bottom: 2rem;
   font-weight: 600;
 }
@@ -93,18 +93,18 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  color: #1a1a24;
+  color: #ffffff;
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .optionBtn:hover {
-  background: #ffffff;
-  border-color: rgba(26, 26, 36, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .selectedOption {
@@ -113,8 +113,8 @@
 }
 
 .optionLetter {
-  background: rgba(26, 26, 36, 0.05);
-  color: #4a4a55;
+  background: rgba(255, 255, 255, 0.05);
+  color: #a0a0ab;
   width: 24px;
   height: 24px;
   display: flex;
@@ -140,13 +140,15 @@
   min-height: 150px;
   resize: vertical;
   font-size: 1rem;
-  background: rgba(255, 255, 255, 0.8);
-  color: #1a1a24;
-  border: 1px solid rgba(26, 26, 36, 0.1);
+  background: rgba(10, 10, 15, 0.6);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .textArea:focus {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--accent-purple);
+  outline: none;
 }
 
 .actions {
@@ -154,5 +156,5 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(26, 26, 36, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
