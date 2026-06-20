@@ -21,8 +21,8 @@ export default function NeuralCanvas({ className }: { className?: string }) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let W = canvas.parentElement?.clientWidth || window.innerWidth;
-    let H = canvas.parentElement?.clientHeight || window.innerHeight;
+    let W = window.innerWidth;
+    let H = window.innerHeight;
     canvas.width = W;
     canvas.height = H;
 
@@ -53,8 +53,8 @@ export default function NeuralCanvas({ className }: { className?: string }) {
     window.addEventListener('mouseleave', handleMouseLeave);
 
     const handleResize = () => {
-      W = canvas.parentElement?.clientWidth || window.innerWidth;
-      H = canvas.parentElement?.clientHeight || window.innerHeight;
+      W = window.innerWidth;
+      H = window.innerHeight;
       canvas.width = W;
       canvas.height = H;
     };

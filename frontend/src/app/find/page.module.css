@@ -56,13 +56,13 @@
 .layoutWrapper {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 2rem 10rem 2rem;
+  padding: 2rem 4rem 10rem 4rem;
 }
 
 .timelineRow {
   display: flex;
   align-items: flex-start;
-  gap: 4rem;
+  gap: 5rem;
   width: 100%;
   position: relative;
   z-index: 2;
@@ -70,14 +70,14 @@
 }
 
 .agentCol {
-  flex: 0 0 400px;
+  flex: 0 0 320px;
   position: relative;
 }
 
 .workspaceCol {
   flex: 1;
   min-width: 0;
-  padding-top: 1rem;
+  padding-top: 0;
 }
 
 .inlineLoading {
@@ -110,12 +110,16 @@
 .errorBox {
   background: rgba(244, 63, 94, 0.1);
   border: 1px solid rgba(244, 63, 94, 0.3);
-  color: #e11d48;
-  padding: 1.5rem;
+  color: #F43F5E;
+  padding: 1rem 1.5rem;
   border-radius: var(--radius-md);
   margin-bottom: 2rem;
   font-weight: 500;
-  max-width: 800px;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
 .darkCard {

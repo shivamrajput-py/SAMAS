@@ -25,16 +25,16 @@ const AGENTS: Agent[] = [
     name: 'PRISM',
     role: 'Identity Architect',
     formula: 'Resume → Verified Profile',
-    desc: 'Extracts your true achievements and rebuilds your resume into a verified proof map. Every skill is scored and matched directly to real market demand.',
+    desc: 'You upload your resume and links. This agent reads everything — your PDF, your GitHub, your portfolio — and builds a verified skill profile with proof scores. No fluff, just facts.',
     color: '#d47a43', // Earthy Amber
     icon: Hexagon
   },
   {
     code: '02',
-    name: 'ORACLE',
+    name: 'LUCID',
     role: 'Truth Validator',
     formula: 'Input → Skill Assessment',
-    desc: 'An adaptive interview engine that tests your claimed skills. It finds your knowledge gaps and calculates exactly what you need to learn to bridge them.',
+    desc: 'Tests what you actually know. Generates adaptive MCQs and open-ended questions, then mathematically adjusts your skill scores based on your answers.',
     color: '#8c7b65', // Muted Sage
     icon: CheckSquare
   },
@@ -43,25 +43,25 @@ const AGENTS: Agent[] = [
     name: 'RADAR',
     role: 'Market Sweeper',
     formula: 'Profile → Global Targets',
-    desc: 'Continuously scans the global job market in the background. It maps your verified profile against thousands of roles to surface the highest-impact opportunities.',
+    desc: 'Takes your verified profile and searches across job boards. Finds relevant roles matching your skills, deduplicates results, and prepares a clean job dataset.',
     color: '#c2a886', // Warm Gold
     icon: Target
   },
   {
     code: '04',
-    name: 'CORTEX',
+    name: 'CIPHER',
     role: 'Deep Analyst',
     formula: 'Syntax → Core Requirements',
-    desc: 'Dissects job descriptions to strip away marketing fluff. It reveals the core technical requirements and automatically maps them against your capabilities.',
+    desc: "Reads every job description deeply. Extracts real requirements, detects ghost job postings, and maps each role's needs against your profile.",
     color: '#a85642', // Brick Red
     icon: Cpu
   },
   {
     code: '05',
-    name: 'NEXUS',
+    name: 'KAIROS',
     role: 'Probability Engine',
     formula: 'Vectors → Success Tiers',
-    desc: 'The final probability engine. It calculates your exact chances of landing the role before you apply, ensuring you only spend time on jobs you can actually win.',
+    desc: 'The final scoring engine. Combines skill overlap, experience alignment, and semantic similarity to rank every job into Easy Get, Best Match, or Stretch Goal.',
     color: '#b8a99a', // Warm Sand
     icon: GitMerge
   },
@@ -266,9 +266,9 @@ export default function AgentShowcase() {
 
       <div className={styles.header}>
         <p className={styles.label}>[ SYSTEM DIRECTIVE ]</p>
-        <h2 className={styles.title}>THE AGENT PROTOCOL</h2>
+        <h2 className={styles.title}>THE AGENTIC DIMENSION</h2>
         <p className={styles.subtitle}>
-          Five autonomous sentinels. One unified dimension.
+          Upload your resume and watch SAMAS agents mirror your best potential jobs.
         </p>
       </div>
 

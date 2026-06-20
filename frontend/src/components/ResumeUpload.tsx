@@ -12,7 +12,7 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
   const [urls, setUrls] = useState<string>('');
   
   // Model Settings
-  const [modelSelection, setModelSelection] = useState('qwen/qwen-max'); // Use a generic default for now
+  const [modelSelection, setModelSelection] = useState('openai/gpt-oss-120b:nitro'); // Use requested default
   const [apiKey, setApiKey] = useState('');
   const [customModel, setCustomModel] = useState('');
   
@@ -37,7 +37,7 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
     <div className={`glass-panel ${styles.uploadCard}`}>
       <h2 className={styles.title}>INITIALIZE PRISM</h2>
       <p className={styles.subtitle}>
-        Provide your base parameters to start the PRISM core identity extraction.
+        Upload your resume. SAMAS agents take it from there.
       </p>
 
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -83,14 +83,12 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
           <div className={styles.inputGroup}>
             <label>AI Intelligence Core</label>
             <select 
-              className="input-glass" 
+              className={`input-glass ${styles.customSelect}`} 
               value={modelSelection} 
               onChange={(e) => setModelSelection(e.target.value)}
             >
-              <option value="qwen/qwen-max">Qwen Max</option>
-              <option value="anthropic/claude-3.5-sonnet">Claude 3.5 Sonnet</option>
-              <option value="openai/gpt-4o">GPT-4o</option>
-              <option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option>
+              <option value="openai/gpt-oss-120b:nitro">GPT-OSS 120B Nitro</option>
+              <option value="deepseek/deepseek-v4-flash">DeepSeek V4 Flash</option>
               <option value="custom">Custom Model (Bring Your Own Key)</option>
             </select>
           </div>
@@ -128,7 +126,7 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
           className={`btn-primary ${styles.submitBtn}`} 
           disabled={!file || isLoading}
         >
-          {isLoading ? 'Processing...' : 'EXECUTE PRISM EXTRACTION'}
+          {isLoading ? 'Processing...' : 'START SAMAS'}
         </button>
       </form>
     </div>

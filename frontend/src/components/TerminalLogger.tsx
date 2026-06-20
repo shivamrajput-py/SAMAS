@@ -12,9 +12,10 @@ export interface LogEntry {
 interface Props {
   logs: LogEntry[];
   title?: string;
+  isComplete?: boolean;
 }
 
-export default function TerminalLogger({ logs, title = "SYSTEM TERMINAL" }: Props) {
+export default function TerminalLogger({ logs, title = "SYSTEM TERMINAL", isComplete = false }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,7 +27,11 @@ export default function TerminalLogger({ logs, title = "SYSTEM TERMINAL" }: Prop
   return (
     <div className={styles.terminalContainer}>
       <div className={styles.header}>
-        <div className={styles.spinner}></div>
+        {isComplete ? (
+          <div style={{ color: '#10B981', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '16px', height: '16px', fontSize: '14px', fontWeight: 'bold' }}>✓</div>
+        ) : (
+          <div className={styles.spinner}></div>
+        )}
         <h3 className={styles.title}>{title}</h3>
       </div>
       <div className={styles.logsArea} ref={scrollRef}>

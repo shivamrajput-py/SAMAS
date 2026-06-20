@@ -108,7 +108,7 @@
 
 .mText {
   font-family: var(--font-display);
-  font-size: clamp(8rem, 15vw, 15rem);
+  font-size: clamp(5rem, 10vw, 10rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.05em;
@@ -223,7 +223,7 @@
 
 .saText, .asText {
   font-family: var(--font-display);
-  font-size: clamp(8rem, 15vw, 15rem);
+  font-size: clamp(5rem, 10vw, 10rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.05em;

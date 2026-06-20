@@ -1,5 +1,5 @@
 .container {
-  padding: 2.5rem;
+  padding: 1.5rem;
   background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -27,7 +27,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffffff;
   font-weight: 700;
 }

@@ -69,7 +69,7 @@ export default function TransitionPortal() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: 'top top',
-        end: '+=150%',     // Shortened scroll distance for faster pacing
+        end: '+=180%',     // Slightly longer scroll for smoother pacing
         scrub: 1.5,
         pin: true,
         anticipatePin: 1,
@@ -86,11 +86,11 @@ export default function TransitionPortal() {
       }, 0);
     }
 
-    // 0.05 - 0.5: Expand the hole in the light overlay to reveal the void dimension
+    // 0.03 - 0.5: Expand the hole in the light overlay to reveal the void dimension
     tl.fromTo(circleRef.current,
       { '--hole-size': '0%' },
-      { '--hole-size': '150%', duration: 0.45, ease: 'power2.inOut' },
-      0.05
+      { '--hole-size': '150%', duration: 0.47, ease: 'power2.inOut' },
+      0.03
     );
 
     // 0.1: Optical shatter flare
@@ -160,17 +160,17 @@ export default function TransitionPortal() {
 
       {/* Scrambling Narrative Texts */}
       <ScramblerText 
-        text="[ SYSTEM DIRECTIVE ]" 
+        text="[ INITIALIZING ]" 
         progress={prog1} 
         className={`${styles.text} ${styles.text1} ${prog1 > 0 && prog1 < 1 ? styles.textActive : ''}`} 
       />
       <ScramblerText 
-        text="[ ENTERING THE VOID ]" 
+        text="[ DEPLOYING AGENTS ]" 
         progress={prog2} 
         className={`${styles.text} ${styles.text2} ${prog2 > 0 && prog2 < 1 ? styles.textActive : ''}`} 
       />
       <ScramblerText 
-        text="[ AGENTS ONLINE ]" 
+        text="[ DIMENSION ACTIVE ]" 
         progress={prog3} 
         className={`${styles.text} ${styles.text3} ${prog3 > 0 && prog3 < 1 ? styles.textActive : ''}`} 
       />

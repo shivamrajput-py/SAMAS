@@ -31,15 +31,25 @@ export default function FindPage() {
   const [droppedJobs, setDroppedJobs] = useState<any[]>([]);
   const [activeAgentId, setActiveAgentId] = useState<string>('profile');
   
-  const [terminalLogs, setTerminalLogs] = useState<LogEntry[]>([]);
+  const [prismLogs, setPrismLogs] = useState<LogEntry[]>([]);
+  const [lucidLogs, setLucidLogs] = useState<LogEntry[]>([]);
+  const [radarLogs, setRadarLogs] = useState<LogEntry[]>([]);
+  const [cipherLogs, setCipherLogs] = useState<LogEntry[]>([]);
+  const [kairosLogs, setKairosLogs] = useState<LogEntry[]>([]);
   
   const addLog = (agent: string, message: string) => {
-    setTerminalLogs(prev => [...prev, {
-      id: Math.random().toString(36).substr(2, 9),
+    const entry: LogEntry = {
+      id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substr(2, 9),
       agent,
       message,
       timestamp: new Date()
-    }]);
+    };
+    
+    if (agent === 'PRISM') setPrismLogs(prev => [...prev, entry]);
+    else if (agent === 'LUCID') setLucidLogs(prev => [...prev, entry]);
+    else if (agent === 'RADAR') setRadarLogs(prev => [...prev, entry]);
+    else if (agent === 'CIPHER') setCipherLogs(prev => [...prev, entry]);
+    else if (agent === 'KAIROS') setKairosLogs(prev => [...prev, entry]);
   };
 
   // BYOK State
@@ -104,15 +114,15 @@ export default function FindPage() {
                 const node = data.node || '';
                 let msg = data.message;
                 if (!msg) {
-                  if (node === 'extract_resume') msg = 'Scraping external profile URLs (GitHub, Portfolio)...';
-                  else if (node === 'scrape_urls') msg = 'Sending extracted data to deep AI for semantic analysis (this may take up to 30-40s)...';
-                  else if (node === 'analyze_with_llm') msg = 'Computing verification scores and compiling unified profile...';
-                  else if (node === 'compute_scores') msg = 'Finalizing identity architecture...';
+                  if (node === 'extract_resume') msg = "I'm parsing your resume file...";
+                  else if (node === 'scrape_urls') msg = "Scraping your GitHub and portfolio links...";
+                  else if (node === 'analyze_with_llm') msg = "Running deep AI analysis on your profile (this may take 30-40s)...";
+                  else if (node === 'compute_scores') msg = "Computing proof scores for each skill...";
                   else msg = `Finished node: ${node}...`;
                 }
                 addLog('PRISM', msg);
               } else if (data.type === 'complete') {
-                addLog('PRISM', 'Identity extraction complete.');
+                addLog('PRISM', 'Profile extraction complete ✓');
                 finalProfile = data.user_profile;
                 finalThreadId = data.thread_id;
                 setProfile(data.user_profile);
@@ -162,8 +172,35 @@ export default function FindPage() {
 
   // Phase 2b: Submit Answers & Phase 3a: Get Titles
   const handleSubmitInterview = async (answers: string[]) => {
-    setTerminalLogs([{ agent: 'ORACLE', message: 'Evaluating answers and applying mathematical score penalties... (this might take up to 40 seconds)', timestamp: new Date().toLocaleTimeString() }]);
+    setLucidLogs([{ 
+      id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substr(2, 9), 
+      agent: 'LUCID', 
+      message: 'Receiving answer submissions...', 
+      timestamp: new Date() 
+    }]);
     setFlowState('evaluating');
+
+    const logMessages = [
+      "Cross-referencing answers against technical documentation...",
+      "Evaluating response structure and completeness...",
+      "Running semantic validation on code blocks...",
+      "Applying mathematical score adjustments based on confidence vectors...",
+      "Finalizing verification profile..."
+    ];
+
+    let logIndex = 0;
+    const logInterval = setInterval(() => {
+      if (logIndex < logMessages.length) {
+        setLucidLogs(prev => [...prev, {
+          id: `log-${Date.now()}-${logIndex}`,
+          agent: 'LUCID',
+          message: logMessages[logIndex],
+          timestamp: new Date()
+        }]);
+        logIndex++;
+      }
+    }, 2500);
+
     try {
       const formattedAnswers = answers.map((ans, idx) => ({
         question_id: questions[idx].question_id,
@@ -184,7 +221,6 @@ export default function FindPage() {
       const evalData = await res1.json();
       setProfile({
         ...evalData.user_profile,
-        score_adjustments: evalData.score_adjustments,
         evaluations: evalData.evaluations,
         questions: evalData.questions,
         answers: evalData.answers
@@ -210,6 +246,8 @@ export default function FindPage() {
       
     } catch (err) {
       handleError('Failed during evaluation', err);
+    } finally {
+      clearInterval(logInterval);
     }
   };
 
@@ -262,25 +300,40 @@ export default function FindPage() {
                 const node = data.node || '';
                 
                 let agentName = 'SYSTEM';
-                if (node.includes('search')) {
+                let mappedMsg = '';
+                
+                if (node.includes('search') || node === 'select_titles' || node === 'deduplicate_and_rank') {
                   setActiveAgentId('search');
                   agentName = 'RADAR';
+                  if (node === 'job_search' || node === 'select_titles') mappedMsg = "Processing your title selections...";
+                  else if (node === 'search_for_title') mappedMsg = "Fetching jobs from search engines...";
+                  else if (node === 'deduplicate_and_rank') mappedMsg = "Removing duplicate listings...";
                 } else if (node.includes('analyzer')) {
                   setActiveAgentId('analyzer');
-                  agentName = 'CORTEX';
-                } else if (node.includes('matcher') || node.includes('ranking')) {
+                  agentName = 'CIPHER';
+                  if (node === 'jd_analyzer_start') {
+                    addLog('RADAR', 'Search complete ✓');
+                    mappedMsg = "Starting job analysis...";
+                  }
+                  else if (node === 'analyzer_deep_deduplication') mappedMsg = "Finding similar postings to deduplicate...";
+                  else if (node === 'analyzer_keyword_prefilter') mappedMsg = "Running keyword pre-filter on jobs...";
+                  else if (node === 'analyzer_batch_jobs') mappedMsg = "Preparing jobs for AI analysis...";
+                  else if (node === 'analyzer_extract_requirements') mappedMsg = "Extracting real requirements from job descriptions...";
+                  else if (node === 'analyzer_finalize_and_embed') mappedMsg = "Computing ghost job scores & embeddings...";
+                } else if (node.includes('matcher') || node.includes('matching')) {
                   setActiveAgentId('matcher');
-                  agentName = 'NEXUS';
+                  agentName = 'KAIROS';
+                  if (node === 'matching_start') {
+                    addLog('CIPHER', 'Analysis complete ✓');
+                    mappedMsg = "Scoring and ranking all jobs against your profile...";
+                  }
+                  else if (node === 'matcher_score_jobs') mappedMsg = "Scoring and ranking all jobs against your profile...";
                 }
 
-                let msg = data.message;
-                if (!msg) {
-                  msg = `Processing step: ${node}...`;
-                }
-                
-                addLog(agentName, msg);
+                let finalMsg = mappedMsg || data.message || `Processing step: ${node}...`;
+                addLog(agentName, finalMsg);
               } else if (data.type === 'complete') {
-                addLog('NEXUS', 'Match vectors finalized.');
+                addLog('KAIROS', 'Matching complete ✓');
                 finalMatchedJobs = data.matched_jobs;
                 finalDroppedJobs = data.dropped_jobs;
               }
@@ -351,125 +404,134 @@ export default function FindPage() {
       <main className={styles.container}>
 
       <div className={styles.cornerHUD}>
-        <p className={styles.hudTopLeft}>SAMAS</p>
-        <p className={styles.hudTopRight}>IS A MULTI-AGENT JOB INTELLIGENCE SYSTEM</p>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <p className={styles.hudTopLeft} style={{ cursor: 'pointer', margin: 0 }}>SAMAS</p>
+        </Link>
       </div>
-
-      <Link href="/" className={styles.backLink}>← BACK TO HOME</Link>
 
       <div className={styles.layoutWrapper}>
         {flowState === 'error' && (
           <div className={styles.errorBox}>
-            <strong>System Error:</strong> {errorMsg}
-            <button onClick={() => setFlowState('upload')} className="btn-primary" style={{marginTop: '1rem'}}>Start Over</button>
+            <span><strong>System Error:</strong> {errorMsg}</span>
+            <button onClick={() => setFlowState('upload')} style={{ padding: '0.5rem 1rem', background: '#F43F5E', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Start Over</button>
           </div>
         )}
 
-        {flowState !== 'results' ? (
-          <div className={timelineStyles.timelineContainer}>
-            <div className={timelineStyles.centerLineTrack} />
-            
-            {/* PRISM ROW */}
-            <div className={styles.timelineRow}>
-              <div className={styles.agentCol}>
-                {renderAgentCard('profile', '01', 'PRISM', 'IDENTITY ARCHITECT', 'Extracting your true achievements and rebuilding your resume into a verified proof map.', '#d47a43', <><span className={timelineStyles.formulaPart}>Resume</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Verified Profile</span></>)}
-              </div>
-              <div className={styles.workspaceCol}>
-                {flowState === 'upload' && <ResumeUpload onSubmit={handleUpload} isLoading={false} />}
-                {flowState === 'loading_profile' && <TerminalLogger logs={terminalLogs} title="PRISM: IDENTITY EXTRACTION" />}
-                {flowState !== 'upload' && flowState !== 'loading_profile' && profile && (
-                  <div style={{ padding: '2rem', background: 'rgba(10, 10, 15, 0.4)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                    <h3 style={{ color: '#ffffff', marginBottom: '1rem' }}>Identity Extracted</h3>
-                    <p style={{ color: '#d1d1d6', lineHeight: '1.6' }}>
-                      {profile.professional_summary}
-                    </p>
-                  </div>
-                )}
-              </div>
+        <div className={timelineStyles.timelineContainer}>
+          <div className={timelineStyles.centerLineTrack} />
+          
+          {/* PRISM ROW */}
+          <div className={styles.timelineRow}>
+            <div className={styles.agentCol}>
+              {renderAgentCard('profile', '01', 'PRISM', 'IDENTITY ARCHITECT', 'PDF/DOCX parser → URL scraper → LLM semantic analysis → proof score computation. Extracts skills with evidence-based confidence scoring.', '#d47a43', <><span className={timelineStyles.formulaPart}>Resume</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Verified Profile</span></>)}
             </div>
-
-            {/* ORACLE ROW */}
-            <div className={styles.timelineRow}>
-              <div className={styles.agentCol}>
-                {renderAgentCard('interview', '02', 'ORACLE', 'INTERROGATOR', 'Adaptive interview engine testing your claimed skills and finding knowledge gaps.', '#8c7b65', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Assessment</span></>)}
-              </div>
-              <div className={styles.workspaceCol}>
-                {flowState === 'interview' && questions.length > 0 && <InterviewUI questions={questions} onSubmitAnswers={handleSubmitInterview} isLoading={false} />}
-                {flowState === 'interview' && questions.length === 0 && renderLoadingIndicator("ORACLE is analyzing your profile and generating adaptive questions...")}
-                {flowState === 'evaluating' && <TerminalLogger logs={terminalLogs} title="ORACLE: INTERVIEW ANALYSIS" />}
-                {flowState !== 'upload' && flowState !== 'loading_profile' && flowState !== 'interview' && flowState !== 'evaluating' && profile && profile.score_adjustments && (
-                  <OracleResults profile={profile} />
-                )}
-              </div>
-            </div>
-
-            {/* RADAR ROW */}
-            <div className={styles.timelineRow}>
-              <div className={styles.agentCol}>
-                {renderAgentCard('search', '03', 'RADAR', 'MARKET SWEEPER', 'Scanning the global job market to surface the highest-impact opportunities.', '#4f6b5b', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Global Targets</span></>)}
-              </div>
-              <div className={styles.workspaceCol}>
-                {flowState === 'title_select' && (
-                  <div className={styles.darkCard} style={{ background: 'rgba(10, 10, 15, 0.6)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <h2 style={{ color: '#ffffff', marginBottom: '1rem', fontSize: '1.5rem' }}>Set Target Parameters</h2>
-                    <p style={{ color: '#a0a0ab', marginBottom: '1.5rem', lineHeight: '1.5' }}>
-                      I have analyzed your updated profile. Please confirm your target job titles and location before I deploy the sweepers.
-                    </p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem' }}>
-                      <div>
-                        <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Target Job Titles (comma separated)</label>
-                        <input 
-                          type="text" 
-                          style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px' }}
-                          value={customTitles}
-                          onChange={(e) => setCustomTitles(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Target Location</label>
-                        <input 
-                          type="text" 
-                          style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px' }}
-                          value={searchLocation}
-                          onChange={(e) => setSearchLocation(e.target.value)}
-                        />
-                      </div>
+            <div className={styles.workspaceCol}>
+              {flowState === 'upload' && <ResumeUpload onSubmit={handleUpload} isLoading={false} />}
+              {flowState !== 'upload' && <TerminalLogger logs={prismLogs} title="PRISM: IDENTITY EXTRACTION" isComplete={flowState !== 'loading_profile'} />}
+              {flowState !== 'upload' && flowState !== 'loading_profile' && profile && (
+                <div style={{ padding: '2rem', background: 'rgba(10, 10, 15, 0.4)', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)', marginTop: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                    <div>
+                      <h3 style={{ color: '#ffffff', marginBottom: '0.5rem', fontSize: '1.2rem', fontFamily: 'var(--font-display)', letterSpacing: '0.05em' }}>{profile.personal_info?.full_name || 'Verified Profile'}</h3>
+                      <p style={{ color: '#d47a43', fontSize: '0.9rem', fontFamily: 'var(--font-mono)' }}>{profile.personal_info?.city ? `${profile.personal_info.city}, ${profile.personal_info.state || ''}` : 'Location Confirmed'}</p>
                     </div>
-                    <button style={{ width: '100%', padding: '1rem', background: '#ffffff', color: '#1a1a24', fontWeight: 'bold', borderRadius: '6px', border: 'none', cursor: 'pointer' }} onClick={() => { setTerminalLogs([]); handleExecuteSearch(); }}>
-                      EXECUTE SWEEP
-                    </button>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ color: '#ffffff', fontSize: '1.8rem', fontWeight: '800', fontFamily: 'var(--font-display)' }}>{profile.skills?.length || 0}</div>
+                      <div style={{ color: '#a0a0ab', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Verified Skills</div>
+                    </div>
                   </div>
-                )}
-                {flowState === 'searching' && activeAgentId === 'search' && <TerminalLogger logs={terminalLogs} title="RADAR: GLOBAL SWEEP" />}
-              </div>
+                  <p style={{ color: '#d1d1d6', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                    {profile.professional_summary}
+                  </p>
+                </div>
+              )}
             </div>
-
-            {/* CORTEX ROW */}
-            <div className={styles.timelineRow}>
-              <div className={styles.agentCol}>
-                {renderAgentCard('analyzer', '04', 'CORTEX', 'REQUIREMENT DECODER', 'Breaking down job descriptions into explicit and implicit requirements.', '#3b5a6c', <><span className={timelineStyles.formulaPart}>JD Batch</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Vectors</span></>)}
-              </div>
-              <div className={styles.workspaceCol}>
-                {flowState === 'searching' && activeAgentId === 'analyzer' && <TerminalLogger logs={terminalLogs} title="CORTEX: REQUIREMENT DECODING" />}
-              </div>
-            </div>
-
-            {/* NEXUS ROW */}
-            <div className={styles.timelineRow}>
-              <div className={styles.agentCol}>
-                {renderAgentCard('matcher', '05', 'NEXUS', 'VECTOR MATCHER', 'Mathematically matching your profile vector against job requirement vectors.', '#5a4661', <><span className={timelineStyles.formulaPart}>Profile Vector</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Ranked Jobs</span></>)}
-              </div>
-              <div className={styles.workspaceCol}>
-                {flowState === 'searching' && activeAgentId === 'matcher' && <TerminalLogger logs={terminalLogs} title="NEXUS: VECTOR MATCHING" />}
-              </div>
-            </div>
-
           </div>
-        ) : (
-          <div style={{width: '100%', animation: 'fadeInUp 0.5s ease-out forwards'}}>
-            <ResultsDashboard jobs={matchedJobs} droppedJobs={droppedJobs} profile={profile} />
+
+          {/* LUCID ROW */}
+          <div className={styles.timelineRow}>
+            <div className={styles.agentCol}>
+              {renderAgentCard('interview', '02', 'LUCID', 'TRUTH VALIDATOR', 'Adaptive question generator → HITL interrupt loop → LLM answer evaluation → mathematical score adjustment. Tests verification and assessment.', '#8c7b65', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Assessment</span></>)}
+            </div>
+            <div className={styles.workspaceCol}>
+              {flowState !== 'upload' && flowState !== 'loading_profile' && questions.length === 0 && <TerminalLogger logs={lucidLogs.length > 0 ? lucidLogs : [{ id: 'lucid-prep', agent: 'LUCID', message: 'Analyzing your profile and generating adaptive questions...', timestamp: new Date() }]} title="LUCID: PREPARING INTERVIEW" />}
+              {flowState !== 'upload' && flowState !== 'loading_profile' && questions.length > 0 && (flowState === 'interview' || flowState === 'evaluating') && <InterviewUI questions={questions} onSubmitAnswers={handleSubmitInterview} isLoading={flowState === 'evaluating'} />}
+              {flowState === 'evaluating' && <TerminalLogger logs={lucidLogs} title="LUCID: INTERVIEW ANALYSIS" />}
+              {flowState !== 'upload' && flowState !== 'loading_profile' && flowState !== 'interview' && flowState !== 'evaluating' && profile && (
+                <OracleResults profile={profile} />
+              )}
+            </div>
           </div>
-        )}
+
+          {/* RADAR ROW */}
+          <div className={styles.timelineRow}>
+            <div className={styles.agentCol}>
+              {renderAgentCard('search', '03', 'RADAR', 'MARKET SWEEPER', 'LLM title suggestion → SerpAPI multi-query search → cross-source deduplication → relevance ranking. Parallel search across job boards.', '#c2a886', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Global Targets</span></>)}
+            </div>
+            <div className={styles.workspaceCol}>
+              {flowState === 'title_select' && (
+                <div className={styles.darkCard} style={{ background: 'rgba(10, 10, 15, 0.6)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <h2 style={{ color: '#ffffff', marginBottom: '1rem', fontSize: '1.5rem', fontFamily: 'var(--font-display)' }}>Set Target Parameters</h2>
+                  <p style={{ color: '#a0a0ab', marginBottom: '1.5rem', lineHeight: '1.5' }}>
+                    I have analyzed your updated profile. Please confirm your target job titles and location before I deploy the sweepers.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem' }}>
+                    <div>
+                      <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem', fontFamily: 'var(--font-mono)' }}>Target Job Titles (comma separated)</label>
+                      <input 
+                        type="text" 
+                        style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px', fontFamily: 'var(--font-body)' }}
+                        value={customTitles}
+                        onChange={(e) => setCustomTitles(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', color: '#d1d1d6', marginBottom: '0.5rem', fontSize: '0.9rem', fontFamily: 'var(--font-mono)' }}>Target Location</label>
+                      <input 
+                        type="text" 
+                        style={{ width: '100%', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', borderRadius: '6px', fontFamily: 'var(--font-body)' }}
+                        value={searchLocation}
+                        onChange={(e) => setSearchLocation(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <button style={{ width: '100%', padding: '1rem', background: '#ffffff', color: '#1a1a24', fontWeight: 'bold', borderRadius: '6px', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }} onClick={() => { setRadarLogs([]); setCipherLogs([]); setKairosLogs([]); handleExecuteSearch(); }}>
+                    [ EXECUTE SWEEP ]
+                  </button>
+                </div>
+              )}
+              {(flowState === 'searching' || flowState === 'results') && <TerminalLogger logs={radarLogs} title="RADAR: GLOBAL SWEEP" isComplete={flowState === 'results'} />}
+            </div>
+          </div>
+
+          {/* CIPHER ROW */}
+          <div className={styles.timelineRow}>
+            <div className={styles.agentCol}>
+              {renderAgentCard('analyzer', '04', 'CIPHER', 'DEEP ANALYST', 'Deep deduplication → keyword pre-filter → batch LLM extraction → ghost job detection → Pinecone embedding. Processes job descriptions at scale.', '#a85642', <><span className={timelineStyles.formulaPart}>JD Batch</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Vectors</span></>)}
+            </div>
+            <div className={styles.workspaceCol}>
+              {(flowState === 'searching' || flowState === 'results') && (cipherLogs.length > 0 || activeAgentId === 'analyzer' || activeAgentId === 'matcher') && <TerminalLogger logs={cipherLogs} title="CIPHER: REQUIREMENT DECODING" isComplete={flowState === 'results'} />}
+            </div>
+          </div>
+
+          {/* KAIROS ROW */}
+          <div className={styles.timelineRow}>
+            <div className={styles.agentCol}>
+              {renderAgentCard('matcher', '05', 'KAIROS', 'PROBABILITY ENGINE', '35% skill overlap + 20% experience delta + 25% embedding similarity + 20% proof alignment → tier classification. Weighted multi-signal scoring.', '#b8a99a', <><span className={timelineStyles.formulaPart}>Profile Vector</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Ranked Jobs</span></>)}
+            </div>
+            <div className={styles.workspaceCol}>
+              {(flowState === 'searching' || flowState === 'results') && (kairosLogs.length > 0 || activeAgentId === 'matcher') && <TerminalLogger logs={kairosLogs} title="KAIROS: VECTOR MATCHING" />}
+              
+              {/* RESULTS DASHBOARD RENDERED INLINE */}
+              {flowState === 'results' && (
+                <div style={{width: '100%', animation: 'fadeInUp 0.8s ease-out forwards', marginTop: '2rem'}}>
+                  <ResultsDashboard jobs={matchedJobs} droppedJobs={droppedJobs} profile={profile} />
+                </div>
+              )}
+            </div>
+          </div>
+
+        </div>
       </div>
       </main>
     </VoidDimension>

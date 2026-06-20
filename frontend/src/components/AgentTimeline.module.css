@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
-  padding-left: 2rem;
-  padding-top: 4rem;
+  gap: 3rem;
+  padding-left: 1rem;
+  padding-top: 2rem;
   padding-bottom: 4rem;
 }
 
@@ -102,7 +102,7 @@
 
 .glassCard {
   width: 100%;
-  padding: 2.5rem;
+  padding: 1.5rem;
   position: relative;
   background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(20px);
@@ -138,20 +138,20 @@
 .agentNumber {
   font-family: var(--font-display);
   position: absolute;
-  top: 1rem;
-  left: 1.5rem;
-  font-size: 4rem;
+  top: 0.5rem;
+  left: 1rem;
+  font-size: 3rem;
   font-weight: 900;
   color: #ffffff;
-  opacity: 0.03;
+  opacity: 0.04;
   line-height: 1;
   user-select: none;
 }
 
 .iconWrapper {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
@@ -167,11 +167,11 @@
 
 .agentName {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.05em;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.25rem;
 }
 
@@ -189,8 +189,8 @@
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .formulaPart {
@@ -209,13 +209,13 @@
   height: 1px;
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .agentDesc {
   color: #a0a0ab;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   margin: 0;
 }
 

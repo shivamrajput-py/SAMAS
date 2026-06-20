@@ -80,6 +80,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Scale down rem values on mobile to fix overflow */
+  }
+}
+
 /* ─── Base Styles ─── */
 body {
   background-color: var(--void);

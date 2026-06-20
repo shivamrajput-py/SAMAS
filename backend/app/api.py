@@ -82,7 +82,9 @@ async def upload_resume(
         os.unlink(tmp_path)
         
         if not user_profile:
-            raise HTTPException(status_code=500, detail="Failed to build profile")
+            errors = final_state.get("errors", [])
+            err_detail = f"Failed to build profile. Reason: {errors[-1] if errors else 'Unknown error'}"
+            raise HTTPException(status_code=500, detail=err_detail)
             
         return {"user_profile": user_profile, "thread_id": config["configurable"]["thread_id"]}
     except Exception as e:
@@ -149,9 +151,27 @@ async def submit_interview(payload: InterviewSubmitPayload):
     await interview_graph.ainvoke(Command(resume=payload.answers), config)
     
     final_state = interview_graph.get_state(config).values
+    
+    # Retrieve the updated profile from state
+    updated_profile = final_state.get("updated_user_profile", final_state.get("user_profile", {}))
+    
+    # Extract score adjustments from interview_summary
+    summary = final_state.get("interview_summary", {})
+    raw_adjustments = summary.get("adjustments", [])
+    
+    # Map 'reason' to 'reasoning' for the frontend
+    mapped_adjustments = []
+    for adj in raw_adjustments:
+        mapped_adjustments.append({
+            **adj,
+            "reasoning": adj.get("reason", "")
+        })
+        
+    # Inject into the returned profile object
+    updated_profile["score_adjustments"] = mapped_adjustments
+    
     return {
-        "user_profile": final_state.get("user_profile", {}),
-        "score_adjustments": final_state.get("score_adjustments", []),
+        "user_profile": updated_profile,
         "evaluations": final_state.get("evaluations", []),
         "questions": final_state.get("questions", []),
         "answers": final_state.get("answers", [])

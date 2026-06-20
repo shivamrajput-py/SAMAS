@@ -1,7 +1,7 @@
 .uploadCard {
-  padding: 3rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   background: rgba(10, 10, 15, 0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -26,7 +26,7 @@
 .title {
   margin-bottom: 0.5rem;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: #ffffff;
   text-align: center;
   letter-spacing: 0.05em;
@@ -34,9 +34,10 @@
 
 .subtitle {
   color: #a0a0ab;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: 400;
   text-align: center;
+  font-size: 0.85rem;
 }
 
 .form {
@@ -52,7 +53,7 @@
 .dropZone {
   border: 2px dashed rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
-  padding: 3rem 2rem;
+  padding: 1.5rem 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.03);
@@ -78,7 +79,7 @@
 }
 
 .uploadIcon {
-  font-size: 3rem;
+  font-size: 2rem;
   opacity: 0.6;
   color: #ffffff;
 }
@@ -179,4 +180,15 @@
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.customSelect {
+  cursor: pointer;
+  background-color: rgba(10, 10, 15, 0.8) !important;
+}
+
+.customSelect option {
+  background-color: #1a1a24;
+  color: #ffffff;
+  padding: 10px;
 }

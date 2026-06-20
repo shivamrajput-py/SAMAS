@@ -46,7 +46,7 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 900;
   color: #ffffff;
   letter-spacing: 0.05em;
@@ -55,11 +55,11 @@
 }
 
 .subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(16px, 1.5vw, 22px);
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.1vw, 16px);
   font-weight: 300;
   color: var(--muted);
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -189,7 +189,7 @@
 
 .glassCard {
   width: 100%;
-  padding: clamp(32px, 4vw, 48px);
+  padding: clamp(24px, 3vw, 36px);
   position: relative;
   background: rgba(10, 10, 15, 0.4);
   backdrop-filter: blur(8px);
@@ -227,7 +227,7 @@
   position: absolute;
   top: clamp(16px, 2vw, 24px);
   left: clamp(16px, 2vw, 24px);
-  font-size: clamp(60px, 8vw, 100px);
+  font-size: clamp(48px, 6vw, 80px);
   font-weight: 900;
   color: var(--agent-color);
   opacity: 0.08;
@@ -251,7 +251,7 @@
 
 .agentName {
   font-family: var(--font-display);
-  font-size: clamp(32px, 3vw, 42px);
+  font-size: clamp(24px, 2.5vw, 32px);
   font-weight: 800;
   color: var(--pure-white);
   letter-spacing: 0.05em;
