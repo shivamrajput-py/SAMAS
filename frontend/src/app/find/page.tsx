@@ -11,6 +11,7 @@ import OracleResults from '@/components/OracleResults';
 import Link from 'next/link';
 import VoidDimension from '@/components/landing/VoidDimension';
 import TerminalLogger, { LogEntry } from '@/components/TerminalLogger';
+import LandingFooter from '@/components/landing/LandingFooter';
 
 type FlowState = 'upload' | 'loading_profile' | 'interview' | 'evaluating' | 'title_select' | 'searching' | 'results' | 'error';
 
@@ -98,15 +99,16 @@ export default function FindPage() {
                 throw new Error(data.message);
               } else if (data.type === 'start') {
                 addLog('PRISM', 'Initializing identity extraction protocol...');
+                addLog('PRISM', 'Extracting text and structure from resume document...');
               } else if (data.type === 'progress') {
                 const node = data.node || '';
                 let msg = data.message;
                 if (!msg) {
-                  if (node === 'parser') msg = 'Parsing raw document arrays...';
-                  else if (node === 'skill_extractor') msg = 'Extracting latent capabilities and skills...';
-                  else if (node === 'proof_analyzer') msg = 'Cross-referencing claims and generating proof scores...';
-                  else if (node === 'formatter') msg = 'Compiling unified semantic profile...';
-                  else msg = `Processing node: ${node}...`;
+                  if (node === 'extract_resume') msg = 'Scraping external profile URLs (GitHub, Portfolio)...';
+                  else if (node === 'scrape_urls') msg = 'Sending extracted data to deep AI for semantic analysis (this may take up to 30-40s)...';
+                  else if (node === 'analyze_with_llm') msg = 'Computing verification scores and compiling unified profile...';
+                  else if (node === 'compute_scores') msg = 'Finalizing identity architecture...';
+                  else msg = `Finished node: ${node}...`;
                 }
                 addLog('PRISM', msg);
               } else if (data.type === 'complete') {
@@ -160,6 +162,7 @@ export default function FindPage() {
 
   // Phase 2b: Submit Answers & Phase 3a: Get Titles
   const handleSubmitInterview = async (answers: string[]) => {
+    setTerminalLogs([{ agent: 'ORACLE', message: 'Evaluating answers and applying mathematical score penalties... (this might take up to 40 seconds)', timestamp: new Date().toLocaleTimeString() }]);
     setFlowState('evaluating');
     try {
       const formattedAnswers = answers.map((ans, idx) => ({
@@ -179,7 +182,13 @@ export default function FindPage() {
       });
       if (!res1.ok) throw new Error(await res1.text());
       const evalData = await res1.json();
-      setProfile(evalData.user_profile);
+      setProfile({
+        ...evalData.user_profile,
+        score_adjustments: evalData.score_adjustments,
+        evaluations: evalData.evaluations,
+        questions: evalData.questions,
+        answers: evalData.answers
+      });
       
       setActiveAgentId('search');
       const res2 = await fetch(`${API_BASE_URL}/api/search/titles`, {
@@ -337,6 +346,7 @@ export default function FindPage() {
   );
 
   return (
+    <>
     <VoidDimension>
       <main className={styles.container}>
 
@@ -384,8 +394,9 @@ export default function FindPage() {
                 {renderAgentCard('interview', '02', 'ORACLE', 'INTERROGATOR', 'Adaptive interview engine testing your claimed skills and finding knowledge gaps.', '#8c7b65', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Skill Assessment</span></>)}
               </div>
               <div className={styles.workspaceCol}>
-                {flowState === 'interview' && <InterviewUI questions={questions} onSubmitAnswers={handleSubmitInterview} isLoading={false} />}
-                {flowState === 'evaluating' && renderLoadingIndicator("Evaluating answers and applying mathematical score penalties...")}
+                {flowState === 'interview' && questions.length > 0 && <InterviewUI questions={questions} onSubmitAnswers={handleSubmitInterview} isLoading={false} />}
+                {flowState === 'interview' && questions.length === 0 && renderLoadingIndicator("ORACLE is analyzing your profile and generating adaptive questions...")}
+                {flowState === 'evaluating' && <TerminalLogger logs={terminalLogs} title="ORACLE: INTERVIEW ANALYSIS" />}
                 {flowState !== 'upload' && flowState !== 'loading_profile' && flowState !== 'interview' && flowState !== 'evaluating' && profile && profile.score_adjustments && (
                   <OracleResults profile={profile} />
                 )}
@@ -424,10 +435,7 @@ export default function FindPage() {
                         />
                       </div>
                     </div>
-                    <button style={{ width: '100%', padding: '1rem', background: '#ffffff', color: '#1a1a24', fontWeight: 'bold', borderRadius: '6px', border: 'none', cursor: 'pointer' }} onClick={() => {
-                      setTerminalLogs([]);
-                      handleExecuteSearch();
-                    }}>
+                    <button style={{ width: '100%', padding: '1rem', background: '#ffffff', color: '#1a1a24', fontWeight: 'bold', borderRadius: '6px', border: 'none', cursor: 'pointer' }} onClick={() => { setTerminalLogs([]); handleExecuteSearch(); }}>
                       EXECUTE SWEEP
                     </button>
                   </div>
@@ -465,5 +473,7 @@ export default function FindPage() {
       </div>
       </main>
     </VoidDimension>
+    <LandingFooter />
+    </>
   );
 }

@@ -151,7 +151,10 @@ async def submit_interview(payload: InterviewSubmitPayload):
     final_state = interview_graph.get_state(config).values
     return {
         "user_profile": final_state.get("user_profile", {}),
-        "score_adjustments": final_state.get("score_adjustments", [])
+        "score_adjustments": final_state.get("score_adjustments", []),
+        "evaluations": final_state.get("evaluations", []),
+        "questions": final_state.get("questions", []),
+        "answers": final_state.get("answers", [])
     }
 
 class SearchStartPayload(BaseModel):

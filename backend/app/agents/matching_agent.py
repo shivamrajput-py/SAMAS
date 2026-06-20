@@ -4,6 +4,7 @@ from typing import List, Dict, TypedDict
 
 # LangChain / LangGraph
 from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import MemorySaver
 
 # Local
 from app.models.job import JobListing
@@ -275,4 +276,6 @@ def build_matching_graph() -> StateGraph:
     builder.add_node("score_jobs", score_jobs_node)
     builder.add_edge(START, "score_jobs")
     builder.add_edge("score_jobs", END)
-    return builder.compile()
+    
+    checkpointer = MemorySaver()
+    return builder.compile(checkpointer=checkpointer)

@@ -11,10 +11,10 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [urls, setUrls] = useState<string>('');
   
-  // BYOK Settings
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  // Model Settings
+  const [modelSelection, setModelSelection] = useState('qwen/qwen-max'); // Use a generic default for now
   const [apiKey, setApiKey] = useState('');
-  const [modelName, setModelName] = useState('qwen/qwen3.7-plus');
+  const [customModel, setCustomModel] = useState('');
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -29,7 +29,8 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
     event.preventDefault();
     if (!file) return;
     const urlList = urls.split(',').map((url) => url.trim()).filter(Boolean);
-    onSubmit(file, urlList, apiKey, modelName);
+    const finalModel = modelSelection === 'custom' ? customModel : modelSelection;
+    onSubmit(file, urlList, apiKey, finalModel);
   };
 
   return (
@@ -78,38 +79,45 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
           />
         </div>
         
-        <div className={styles.advancedSection}>
-          <button 
-            type="button" 
-            className={styles.advancedToggle}
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            <span>Advanced Settings (BYOK)</span>
-            <span className={styles.chevron}>{showAdvanced ? '▲' : '▼'}</span>
-          </button>
-          
-          {showAdvanced && (
+        <div className={styles.modelSection}>
+          <div className={styles.inputGroup}>
+            <label>AI Intelligence Core</label>
+            <select 
+              className="input-glass" 
+              value={modelSelection} 
+              onChange={(e) => setModelSelection(e.target.value)}
+            >
+              <option value="qwen/qwen-max">Qwen Max</option>
+              <option value="anthropic/claude-3.5-sonnet">Claude 3.5 Sonnet</option>
+              <option value="openai/gpt-4o">GPT-4o</option>
+              <option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option>
+              <option value="custom">Custom Model (Bring Your Own Key)</option>
+            </select>
+          </div>
+
+          {modelSelection === 'custom' && (
             <div className={styles.advancedPanel}>
               <div className={styles.inputGroup}>
-                <label>OpenRouter API Key (Optional)</label>
+                <label>OpenRouter API Key (Required for custom models)</label>
                 <input
                   type="password"
                   value={apiKey}
                   onChange={(event) => setApiKey(event.target.value)}
                   placeholder="sk-or-v1-..."
                   className="input-glass"
+                  required={modelSelection === 'custom'}
                 />
               </div>
               <div className={styles.inputGroup}>
-                <label>Model Name</label>
+                <label>Custom Model ID (OpenRouter)</label>
                 <input
                   type="text"
-                  value={modelName}
-                  onChange={(event) => setModelName(event.target.value)}
-                  placeholder="qwen/qwen3.7-plus"
+                  value={customModel}
+                  onChange={(event) => setCustomModel(event.target.value)}
+                  placeholder="e.g. meta-llama/llama-3-70b-instruct"
                   className="input-glass"
+                  required={modelSelection === 'custom'}
                 />
-                <small className={styles.hintText}>Default: qwen/qwen3.7-plus</small>
               </div>
             </div>
           )}

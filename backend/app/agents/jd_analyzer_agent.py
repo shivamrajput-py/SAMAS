@@ -7,6 +7,7 @@ import numpy as np
 # LangChain / LangGraph
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import MemorySaver
 
 # Local
 from app.llm import call_llm_with_fallback
@@ -408,4 +409,5 @@ def build_jd_analyzer_graph() -> StateGraph:
     builder.add_edge("extract_requirements", "finalize_and_embed")
     builder.add_edge("finalize_and_embed", END)
     
-    return builder.compile()
+    checkpointer = MemorySaver()
+    return builder.compile(checkpointer=checkpointer)

@@ -33,6 +33,41 @@ export default function OracleResults({ profile }: Props) {
           );
         })}
       </div>
+      <div className={styles.analysisSection}>
+        <h3 className={styles.sectionTitle}>Detailed Analysis</h3>
+        <div className={styles.qaList}>
+          {profile.questions && profile.questions.map((q: any, idx: number) => {
+            const evaluation = profile.evaluations?.find((e: any) => e.question_id === q.question_id);
+            const answer = profile.answers?.find((a: any) => a.question_id === q.question_id);
+            
+            return (
+              <div key={idx} className={styles.qaCard}>
+                <div className={styles.qHeader}>
+                  <span className={styles.qNumber}>Q{idx + 1}</span>
+                  <span className={styles.qText}>{q.question_text}</span>
+                </div>
+                
+                <div className={styles.aSection}>
+                  <div className={styles.aLabel}>Your Answer:</div>
+                  <div className={styles.aText}>{answer?.answer || "No answer provided"}</div>
+                </div>
+                
+                {evaluation && (
+                  <div className={styles.evalSection}>
+                    <div className={styles.evalHeader}>
+                      <span className={styles.evalLabel}>ORACLE Feedback</span>
+                      <span className={`${styles.evalScore} ${evaluation.answer_quality >= 0.7 ? styles.goodScore : evaluation.answer_quality >= 0.4 ? styles.okScore : styles.badScore}`}>
+                        Score: {(evaluation.answer_quality * 100).toFixed(0)}%
+                      </span>
+                    </div>
+                    <div className={styles.evalFeedback}>{evaluation.feedback}</div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

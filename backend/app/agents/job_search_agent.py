@@ -174,8 +174,8 @@ async def search_for_title_node(state: TitleSearchState) -> dict:
     
     print(f"   Searching SerpAPI for '{title}' in {location}...")
     
-    # Using 3 pages for SerpAPI
-    all_jobs = await search_serpapi(title, location, max_pages=3)
+    # Using 1 page for SerpAPI to reduce total jobs and speed up downstream batching
+    all_jobs = await search_serpapi(title, location, max_pages=1)
             
     print(f"      Found {len(all_jobs)} jobs for '{title}'")
     
@@ -219,9 +219,16 @@ def deduplicate_and_rank_node(state: JobSearchState) -> dict:
                 job = job.model_dump()
             unique_jobs.append(job)
             
-    unique_jobs.sort(key=lambda j: j.get('title', ''))
+    # Sort jobs by title alphabetically (this was the original logic, but we don't want to just take A-B)
+    # Instead, we just shuffle them slightly or take them as they came in to preserve relevance mix.
+    # unique_jobs.sort(key=lambda j: j.get('title', ''))
     
     print(f"   Deduplicated total: {len(unique_jobs)} unique jobs")
+    
+    # Pre-filtering: Cap at 25 jobs to prevent the batch processing from taking too long
+    if len(unique_jobs) > 25:
+        unique_jobs = unique_jobs[:25]
+        print(f"   Pre-filtered to {len(unique_jobs)} jobs to speed up analysis")
     
     return {
         "deduplicated_jobs": unique_jobs,

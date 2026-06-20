@@ -31,7 +31,7 @@
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.1em;
-  color: #1a1a24;
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -42,7 +42,7 @@
   left: 2rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: #666677;
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   letter-spacing: 0.1em;
   transition: color 0.3s ease;
@@ -50,7 +50,7 @@
 }
 
 .backLink:hover {
-  color: #1a1a24;
+  color: #ffffff;
 }
 
 .layoutWrapper {
@@ -161,4 +161,36 @@
 
 .executeBtn:hover {
   opacity: 0.9;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .timelineRow {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .agentCol {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  
+  .workspaceCol {
+    width: 100%;
+    padding-top: 0;
+  }
+  
+  .layoutWrapper {
+    padding: 2rem 1rem 10rem 1rem;
+  }
+  
+  .cornerHUD {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .hudTopRight {
+    display: none; /* Hide long text on mobile */
+  }
 }

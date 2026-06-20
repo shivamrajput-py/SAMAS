@@ -40,8 +40,11 @@ export default function ResultsDashboard({ jobs, droppedJobs = [], profile }: Pr
     }
 
     const jobData = isDropped ? jobLike : jobLike.job;
-    if (locationFilter && jobData?.location) {
-      return jobData.location.toLowerCase().includes(locationFilter.toLowerCase());
+    if (locationFilter) {
+      if (!jobData?.location) return false;
+      if (!jobData.location.toLowerCase().includes(locationFilter.toLowerCase())) {
+        return false;
+      }
     }
 
     return true;
@@ -202,7 +205,7 @@ export default function ResultsDashboard({ jobs, droppedJobs = [], profile }: Pr
 
                 <div className={styles.jobFooter}>
                   <a href={jobData.url} target="_blank" rel="noreferrer" className={`btn-primary ${styles.applyBtn}`}>
-                    Apply on {jobData.source}
+                    APPLY
                   </a>
                 </div>
               </div>

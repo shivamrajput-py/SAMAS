@@ -90,8 +90,9 @@
 }
 
 .cardWrapper.future {
-  opacity: 0.4;
+  opacity: 0.8;
   transform: scale(0.98);
+  filter: grayscale(100%);
 }
 
 .cardWrapper.active {
