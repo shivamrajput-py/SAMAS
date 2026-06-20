@@ -1,0 +1,246 @@
+.timelineContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding-left: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.timelineHeader {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: #1a1a24;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-left: -2rem;
+}
+
+.centerLineTrack {
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: rgba(26, 26, 36, 0.1);
+  z-index: 1;
+}
+
+.centerLineFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1a24;
+  transition: height 0.5s ease;
+}
+
+.timelineNode {
+  display: flex;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  perspective: 1000px;
+}
+
+.connectionPoint {
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  width: 16px;
+  height: 16px;
+  background: #e6e4df;
+  border: 2px solid var(--agent-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.connectionPoint.active, .connectionPoint.past {
+  background: var(--agent-color);
+}
+
+.connectionPoint::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #e6e4df;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.connectionPoint.past::after, .connectionPoint.active::after {
+  opacity: 1;
+}
+
+.cardWrapper {
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.cardWrapper.future {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.cardWrapper.active {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+.glassCard {
+  width: 100%;
+  padding: 2.5rem;
+  position: relative;
+  background: rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(26, 26, 36, 0.1);
+  border-radius: var(--radius-lg);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.cardWrapper.active .glassCard {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.glassCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--agent-color);
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.cardWrapper.active .glassCard::before, .cardWrapper.past .glassCard::before {
+  opacity: 1;
+}
+
+.agentNumber {
+  font-family: var(--font-display);
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #1a1a24;
+  opacity: 0.05;
+  line-height: 1;
+  user-select: none;
+}
+
+.iconWrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.cardWrapper.active .iconWrapper, .cardWrapper.past .iconWrapper {
+  opacity: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.agentName {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a24;
+  letter-spacing: 0.05em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.agentRole {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--agent-color);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.formula {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+.formulaPart {
+  color: #1a1a24;
+  font-weight: 500;
+}
+
+.arrow {
+  color: var(--agent-color);
+  margin: 0 8px;
+  font-weight: bold;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(26, 26, 36, 0.1);
+  margin: 1rem 0;
+}
+
+.agentDesc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #4a4a55;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.processingStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--agent-color);
+  font-weight: 600;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--agent-color);
+  border-radius: 50%;
+  animation: pulseAnim 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}

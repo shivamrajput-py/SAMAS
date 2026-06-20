@@ -1,0 +1,163 @@
+﻿/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-deep, #0b1121);
+}
+
+/* Canvas */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Content overlay */
+.overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: none; /* let mouse events pass through to canvas */
+}
+
+/* Title: SAMAS */
+.title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary, #f8fafc);
+
+  /* shimmer gradient */
+  background: linear-gradient(
+    90deg,
+    var(--text-primary, #f8fafc) 0%,
+    var(--accent-cyan, #00f0ff) 40%,
+    var(--text-primary, #f8fafc) 60%,
+    var(--accent-cyan, #00f0ff) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Tagline */
+.tagline {
+  margin-top: 1rem;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
+  color: var(--text-secondary, #94a3b8);
+  letter-spacing: 0.02em;
+}
+
+/* CTA Button */
+.cta {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.9rem 2.2rem;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+  color: #0b0e17;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  background: linear-gradient(135deg, #00f0ff, #b388ff);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  pointer-events: auto; /* override the overlay's pointer-events:none */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 18px rgba(0, 240, 255, 0.55),
+    0 0 40px rgba(0, 240, 255, 0.2);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--accent-cyan, #00f0ff);
+  outline-offset: 3px;
+}
+
+/* Terminal status line */
+.terminal {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  text-align: center;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(0, 240, 255, 0.5);
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 2px;
+  background: rgba(0, 240, 255, 0.6);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .overlay {
+    padding: 1.5rem 1rem;
+  }
+
+  .tagline {
+    max-width: 90%;
+  }
+
+  .cta {
+    padding: 0.75rem 1.6rem;
+  }
+
+  .terminal {
+    font-size: 0.65rem;
+    bottom: 1rem;
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,329 @@
+.section {
+  background: var(--void);
+  position: relative;
+  width: 100%;
+  z-index: 4;
+  padding-bottom: 12rem;
+  overflow: hidden;
+}
+
+/* Enhancement 4: Removed heavy SVG noise overlay for performance reasons */
+.section::after {
+  display: none;
+}
+
+/* Enhancement 1: Particle canvas layer */
+.particleCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, rgba(139, 107, 255, 0.03) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  padding-top: clamp(80px, 15vh, 150px);
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 10;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1vw, 14px);
+  letter-spacing: 0.4em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-shadow: 0 0 15px rgba(95, 212, 255, 0.4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.timelineContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.centerLineTrack {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.centerLineFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--cyan), var(--violet), var(--cyan));
+  transform-origin: top center;
+  box-shadow: 0 0 15px var(--cyan), 0 0 30px var(--violet);
+  overflow: hidden;
+}
+
+/* Enhancement 3: Traveling light pulse on neural line */
+.centerLineFill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 20%,
+    rgba(255, 255, 255, 0.6) 45%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.6) 55%,
+    rgba(255, 255, 255, 0.0) 80%,
+    transparent 100%
+  );
+  animation: neuralPulse 3.5s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+@keyframes neuralPulse {
+  0% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(calc(100vh * 5));
+    opacity: 0;
+  }
+}
+
+.timelineNode {
+  display: flex;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  perspective: 1000px; /* For the 3D tilt */
+}
+
+.nodeLeft {
+  justify-content: flex-start;
+}
+
+.nodeRight {
+  justify-content: flex-end;
+}
+
+/* Connects the card to the central line */
+.connectionPoint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: #050508;
+  border: 2px solid var(--agent-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 5;
+  box-shadow: 0 0 20px var(--agent-color);
+  opacity: 0;
+}
+
+.connectionPoint::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--agent-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cardWrapper {
+  width: 45%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.glassCard {
+  width: 100%;
+  padding: clamp(32px, 4vw, 48px);
+  position: relative;
+  background: rgba(10, 10, 15, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.glassCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--agent-color), transparent);
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.glassCard:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 60px rgba(139, 107, 255, 0.15) inset;
+}
+
+.glassCard:hover::before {
+  opacity: 1;
+}
+
+.agentNumber {
+  font-family: var(--font-display);
+  position: absolute;
+  top: clamp(16px, 2vw, 24px);
+  left: clamp(16px, 2vw, 24px);
+  font-size: clamp(60px, 8vw, 100px);
+  font-weight: 900;
+  color: var(--agent-color);
+  opacity: 0.08;
+  line-height: 1;
+  user-select: none;
+}
+
+.iconWrapper {
+  position: absolute;
+  top: clamp(24px, 3vw, 32px);
+  right: clamp(24px, 3vw, 32px);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(30px); /* Pushes content out for 3D effect */
+}
+
+.agentName {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3vw, 42px);
+  font-weight: 800;
+  color: var(--pure-white);
+  letter-spacing: 0.05em;
+  margin-top: clamp(40px, 5vw, 60px);
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.agentRole {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--agent-color);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.formula {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1vw, 14px);
+  background: rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 24px;
+}
+
+.formulaPart {
+  color: var(--silver);
+}
+
+.arrow {
+  color: var(--agent-color);
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 24px 0;
+}
+
+.agentDesc {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .centerLineTrack {
+    left: 20px;
+  }
+  .connectionPoint {
+    left: 20px;
+  }
+  .cardWrapper {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+  }
+  .nodeLeft, .nodeRight {
+    justify-content: flex-start;
+  }
+}

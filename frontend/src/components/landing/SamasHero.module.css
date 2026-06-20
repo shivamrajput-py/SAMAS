@@ -1,0 +1,536 @@
+/* ============================================
+   SAMAS HERO — The Real World Surface
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--hero-bg);
+  background-image: radial-gradient(circle at 50% 50%, #eeebe5 0%, var(--hero-bg) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Boot Sequence ─── */
+.bootOverlay {
+  position: absolute;
+  inset: 0;
+  background: #0f0f0e;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.booted .bootOverlay {
+  opacity: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.5s;
+}
+
+.booted .canvas {
+  opacity: 1;
+}
+
+/* ─── Hover Zones ─── */
+.hoverZones {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.zoneLeft, .zoneRight {
+  width: 40%;
+  height: 100%;
+}
+
+/* ─── Overlay ─── */
+.overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ─── Text Container ─── */
+.textContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.textTrack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   THE "M" — Creative Center Treatment
+   ============================================ */
+.centerM {
+  position: relative;
+  z-index: 15;
+  pointer-events: auto;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1s, 
+              transform 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1s;
+}
+
+.mBooted {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mText {
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 15vw, 15rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  /* Solid dark color — reliable cross-browser */
+  color: #111111;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  /* Amber glow that breathes — gives the warm gradient feel without clip issues */
+  text-shadow:
+    0 0 0px rgba(212, 122, 67, 0),
+    0 4px 15px rgba(0, 0, 0, 0.08);
+  animation: mGlowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes mGlowPulse {
+  0% {
+    text-shadow: 
+      0 0 30px rgba(212, 122, 67, 0.15),
+      0 4px 15px rgba(0, 0, 0, 0.08);
+    color: #111111;
+  }
+  100% {
+    text-shadow: 
+      0 0 60px rgba(212, 122, 67, 0.25),
+      0 0 120px rgba(212, 122, 67, 0.08),
+      0 4px 15px rgba(0, 0, 0, 0.08);
+    color: #1a1510;
+  }
+}
+
+/* Ambient breathing glow ring behind M */
+.mGlowRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160%;
+  height: 160%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(212, 122, 67, 0.06) 0%, 
+    rgba(212, 122, 67, 0.02) 40%, 
+    transparent 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+  animation: mBreathing 4s ease-in-out infinite;
+}
+
+@keyframes mBreathing {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.15); 
+    opacity: 1;
+  }
+}
+
+/* Subtle orbital particle that orbits the M */
+.mOrbital {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #d47a43;
+  border-radius: 50%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.5;
+  box-shadow: 0 0 8px rgba(212, 122, 67, 0.6);
+  animation: orbit 12s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: translate(-50%, -50%) rotate(0deg) translateX(clamp(60px, 8vw, 100px)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) translateX(clamp(60px, 8vw, 100px)) rotate(-360deg); }
+}
+
+/* ============================================
+   SA & AS — Enhanced Mirroring
+   ============================================ */
+.saHitbox {
+  position: absolute;
+  right: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2vw;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.asHitbox {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2vw;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.saText, .asText {
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 15vw, 15rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin: 0;
+  /* Enhanced transition: slower, more dramatic */
+  transition: 
+    opacity 1.4s cubic-bezier(0.23, 1, 0.32, 1), 
+    transform 1.4s cubic-bezier(0.23, 1, 0.32, 1), 
+    filter 1.4s cubic-bezier(0.23, 1, 0.32, 1),
+    text-shadow 0.8s ease;
+  will-change: transform, opacity, filter;
+}
+
+/* SA — Left mirror half: warm amber identity */
+.saText {
+  color: var(--hero-text);
+  text-shadow: 
+    0 0 40px rgba(212, 122, 67, 0.35),
+    0 0 80px rgba(212, 122, 67, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* AS — Right mirror half: cool sage identity */
+.asText {
+  color: var(--hero-text);
+  text-shadow: 
+    0 0 40px rgba(140, 123, 101, 0.35),
+    0 0 80px rgba(140, 123, 101, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* When SA/AS are visible (hovered), add a colored underline glow */
+.saText::after, .asText::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.saText::after {
+  background: linear-gradient(90deg, transparent, rgba(212, 122, 67, 0.6), transparent);
+}
+
+.asText::after {
+  background: linear-gradient(90deg, transparent, rgba(140, 123, 101, 0.6), transparent);
+}
+
+/* ============================================
+   CORNER HUD TYPOGRAPHY
+   ============================================ */
+.cornerHUD {
+  position: absolute;
+  inset: 0;
+  padding: clamp(20px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 20;
+  pointer-events: none;
+  /* Boot: starts invisible, fades in */
+  opacity: 0;
+  transition: opacity 1s ease 1.5s;
+}
+
+.hudVisible {
+  opacity: 1;
+}
+
+.hudTop, .hudBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.hudBottom {
+  align-items: flex-end;
+}
+
+.hudTopLeft {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--hero-text);
+  margin: 0;
+}
+
+.hudTopRight {
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.75vw, 11px);
+  letter-spacing: 0.15em;
+  color: var(--hero-text-muted);
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.5;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.hudBottomLeft {
+  font-family: var(--font-display);
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--hero-text);
+  text-transform: uppercase;
+  margin: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hudBottomRight {
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 0.8vw, 12px);
+  letter-spacing: 0.2em;
+  color: var(--hero-text-muted);
+  text-transform: uppercase;
+  margin: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Phrase cycling fade */
+.phraseFading {
+  opacity: 0 !important;
+}
+
+/* ============================================
+   TAGLINE — Enhanced Mirror Reflection
+   ============================================ */
+.taglineContainer {
+  position: absolute;
+  bottom: 15vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0rem;
+  pointer-events: auto;
+  /* Boot animation */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 2s, transform 1s ease 2s;
+}
+
+.booted .taglineContainer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  color: #4a4a5e;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  /* Subtle breathing pulse */
+  animation: taglinePulse 4s ease-in-out infinite;
+}
+
+@keyframes taglinePulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Horizontal mirror surface line */
+.mirrorLine {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 122, 67, 0.3), rgba(140, 123, 101, 0.3), transparent);
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+/* Subtle shimmer on the mirror line */
+.mirrorLine::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -20%;
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: mirrorShimmer 3s ease-in-out infinite;
+}
+
+@keyframes mirrorShimmer {
+  0%, 100% { left: -20%; opacity: 0; }
+  50% { left: 80%; opacity: 1; }
+}
+
+.taglineMirror {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  color: #4a4a5e;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  /* Stronger mirror reflection */
+  opacity: 0.25;
+  transform: scaleY(-1);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 80%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 80%);
+}
+
+/* ─── CTA Button ─── */
+.actionWrap {
+  margin-top: 2.5rem;
+}
+
+.enterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background: #050508;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 100px;
+  border: 1px solid rgba(212, 122, 67, 0.4);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(212, 122, 67, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.enterBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.enterBtn:hover {
+  transform: translateY(-2px);
+  background: #0a0a14;
+  border-color: rgba(212, 122, 67, 0.8);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(212, 122, 67, 0.3);
+}
+
+.enterBtn:hover::before {
+  left: 100%;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  color: #d47a43;
+}
+
+.enterBtn:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+.scrollIndicator {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 20;
+  /* Boot animation */
+  opacity: 0;
+  transition: opacity 1s ease 2.5s;
+  animation: scrollFadeOnScroll 0.3s ease forwards paused;
+}
+
+.booted .scrollIndicator {
+  opacity: 0.6;
+}
+
+.scrollText {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--hero-text-muted);
+  text-transform: uppercase;
+}
+
+.scrollChevron {
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid var(--hero-text-muted);
+  border-bottom: 1.5px solid var(--hero-text-muted);
+  transform: rotate(45deg);
+  animation: chevronBounce 2s ease-in-out infinite;
+}
+
+@keyframes chevronBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}

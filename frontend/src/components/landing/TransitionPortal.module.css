@@ -1,0 +1,84 @@
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 3;
+  background: var(--hero-bg);
+}
+
+.circleBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--void);
+  clip-path: circle(0% at 50% 50%);
+}
+
+/* Horizontal mirror crack — light streak across center */
+.mirrorCrack {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  z-index: 8;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: center;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(212, 122, 67, 0.3) 20%, 
+    rgba(255, 255, 255, 0.8) 45%, 
+    rgba(255, 255, 255, 1) 50%, 
+    rgba(255, 255, 255, 0.8) 55%, 
+    rgba(140, 123, 101, 0.3) 80%, 
+    transparent
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(212, 122, 67, 0.3),
+    0 0 80px rgba(140, 123, 101, 0.15);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Narrative text — shared styles */
+.text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Each text has its own color identity */
+.text1 {
+  color: var(--muted);
+  text-shadow: 0 0 15px rgba(158, 156, 150, 0.3);
+}
+
+.text2 {
+  color: #d47a43;
+  text-shadow: 0 0 20px rgba(212, 122, 67, 0.4);
+  font-size: clamp(16px, 2.5vw, 24px);
+}
+
+.text3 {
+  color: #8c7b65;
+  text-shadow: 0 0 20px rgba(140, 123, 101, 0.4);
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.4em;
+}

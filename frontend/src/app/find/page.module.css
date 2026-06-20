@@ -1,0 +1,164 @@
+.container {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  padding-top: 60px;
+}
+
+.ambientGlow {
+  position: fixed;
+  top: -20vh;
+  left: 20vw;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cornerHUD {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hudTopLeft, .hudTopRight {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: #1a1a24;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.backLink {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #666677;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.backLink:hover {
+  color: #1a1a24;
+}
+
+.layoutWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2rem 10rem 2rem;
+}
+
+.timelineRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem; /* The gap is mostly handled by AgentTimeline.module.css timelineContainer */
+}
+
+.agentCol {
+  flex: 0 0 400px;
+  position: relative;
+}
+
+.workspaceCol {
+  flex: 1;
+  min-width: 0;
+  padding-top: 1rem;
+}
+
+.inlineLoading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(26, 26, 36, 0.2);
+  color: #4a4a55;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(26, 26, 36, 0.1);
+  border-top-color: #1a1a24;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorBox {
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: #e11d48;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  max-width: 800px;
+}
+
+.darkCard {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #1a1a24;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.titleInput {
+  width: 100%;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 36, 0.2);
+  border-radius: var(--radius-md);
+  color: #1a1a24;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.executeBtn {
+  width: 100%;
+  padding: 1rem;
+  background: #1a1a24;
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.executeBtn:hover {
+  opacity: 0.9;
+}

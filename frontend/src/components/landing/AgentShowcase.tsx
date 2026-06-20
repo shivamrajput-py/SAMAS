@@ -1,0 +1,406 @@
+'use client';
+
+import { useEffect, useRef, useCallback } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Hexagon, CheckSquare, Target, Cpu, GitMerge } from 'lucide-react';
+import styles from './AgentShowcase.module.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface Agent {
+  code: string;
+  name: string;
+  role: string;
+  formula: string;
+  desc: string;
+  color: string;
+  icon: React.ElementType;
+}
+
+const AGENTS: Agent[] = [
+  {
+    code: '01',
+    name: 'PRISM',
+    role: 'Identity Architect',
+    formula: 'Resume → Verified Profile',
+    desc: 'Extracts your true achievements and rebuilds your resume into a verified proof map. Every skill is scored and matched directly to real market demand.',
+    color: '#d47a43', // Earthy Amber
+    icon: Hexagon
+  },
+  {
+    code: '02',
+    name: 'ORACLE',
+    role: 'Truth Validator',
+    formula: 'Input → Skill Assessment',
+    desc: 'An adaptive interview engine that tests your claimed skills. It finds your knowledge gaps and calculates exactly what you need to learn to bridge them.',
+    color: '#8c7b65', // Muted Sage
+    icon: CheckSquare
+  },
+  {
+    code: '03',
+    name: 'RADAR',
+    role: 'Market Sweeper',
+    formula: 'Profile → Global Targets',
+    desc: 'Continuously scans the global job market in the background. It maps your verified profile against thousands of roles to surface the highest-impact opportunities.',
+    color: '#c2a886', // Warm Gold
+    icon: Target
+  },
+  {
+    code: '04',
+    name: 'CORTEX',
+    role: 'Deep Analyst',
+    formula: 'Syntax → Core Requirements',
+    desc: 'Dissects job descriptions to strip away marketing fluff. It reveals the core technical requirements and automatically maps them against your capabilities.',
+    color: '#a85642', // Brick Red
+    icon: Cpu
+  },
+  {
+    code: '05',
+    name: 'NEXUS',
+    role: 'Probability Engine',
+    formula: 'Vectors → Success Tiers',
+    desc: 'The final probability engine. It calculates your exact chances of landing the role before you apply, ensuring you only spend time on jobs you can actually win.',
+    color: '#b8a99a', // Warm Sand
+    icon: GitMerge
+  },
+];
+
+// ─── Particle colors from the warm palette ───
+const PARTICLE_COLORS = [
+  '#d47a43', // amber
+  '#8c7b65', // sage
+  '#b8a99a', // sand
+  '#c2a886', // warm gold
+  '#a85642', // brick
+  '#e6e4df', // warm stone
+];
+
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  color: string;
+  opacity: number;
+  baseOpacity: number;
+  pulseSpeed: number;
+  pulsePhase: number;
+}
+
+function createParticles(width: number, height: number, count: number): Particle[] {
+  const particles: Particle[] = [];
+  for (let i = 0; i < count; i++) {
+    const baseOpacity = 0.08 + Math.random() * 0.14; // 0.08 – 0.22
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: -(0.08 + Math.random() * 0.2), // gentle drift upward
+      radius: 0.8 + Math.random() * 1.2,
+      color: PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
+      opacity: baseOpacity,
+      baseOpacity,
+      pulseSpeed: 0.3 + Math.random() * 0.7,
+      pulsePhase: Math.random() * Math.PI * 2,
+    });
+  }
+  return particles;
+}
+
+// ─── Floating Particles Background ───
+function VoidParticles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const rafRef = useRef<number>(0);
+
+  const animate = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const { width, height } = canvas;
+    ctx.clearRect(0, 0, width, height);
+
+    const time = performance.now() / 1000;
+
+    for (const p of particlesRef.current) {
+      // move
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // wrap edges
+      if (p.y < -10) p.y = height + 10;
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      // gentle opacity pulse
+      p.opacity = p.baseOpacity + Math.sin(time * p.pulseSpeed + p.pulsePhase) * 0.04;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = Math.max(0, Math.min(p.opacity, 1));
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    rafRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resizeCanvas = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (!rect) return;
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      // Re-create particles on resize to fill new space
+      particlesRef.current = createParticles(canvas.width, canvas.height, 40);
+    };
+
+    resizeCanvas();
+    rafRef.current = requestAnimationFrame(animate);
+
+    window.addEventListener('resize', resizeCanvas);
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, [animate]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className={styles.particleCanvas}
+      aria-hidden="true"
+    />
+  );
+}
+
+// ─── Agent Card ───
+function AgentCard({ agent, index }: { agent: Agent; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const connectionRef = useRef<HTMLDivElement>(null);
+
+  const isEven = index % 2 === 0;
+
+  useGSAP(() => {
+    if (!cardRef.current || !contentRef.current || !wrapperRef.current || !connectionRef.current) return;
+
+    // Card Slide-in
+    gsap.fromTo(
+      wrapperRef.current,
+      { x: isEven ? -100 : 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Enhancement 2: Connection point flash animation on scroll entry
+    const connTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapperRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    connTl
+      // Start invisible & tiny
+      .fromTo(
+        connectionRef.current,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 2.2,
+          opacity: 1,
+          duration: 0.3,
+          ease: 'power2.out',
+        }
+      )
+      // Flash: bright burst
+      .to(connectionRef.current, {
+        boxShadow: `0 0 40px ${agent.color}, 0 0 80px ${agent.color}`,
+        duration: 0.15,
+        ease: 'power1.in',
+      })
+      // Settle to normal state
+      .to(connectionRef.current, {
+        scale: 1,
+        boxShadow: `0 0 20px ${agent.color}`,
+        duration: 0.6,
+        ease: 'elastic.out(1, 0.5)',
+      });
+
+    // Staggered text reveal
+    const elements = contentRef.current.children;
+    gsap.fromTo(
+      elements,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Subtle 3D Tilt effect on mouse move
+    const card = cardRef.current;
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      gsap.to(card, {
+        rotateX,
+        rotateY,
+        duration: 0.5,
+        ease: 'power2.out',
+        transformPerspective: 1000,
+      });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(card, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseleave', handleMouseLeave);
+    };
+
+  }, { scope: wrapperRef });
+
+  const Icon = agent.icon;
+
+  return (
+    <div ref={wrapperRef} className={`${styles.timelineNode} ${isEven ? styles.nodeLeft : styles.nodeRight}`}>
+      
+      {/* The glowing connection point to the center line */}
+      <div
+        ref={connectionRef}
+        className={styles.connectionPoint}
+        style={{ '--agent-color': agent.color } as React.CSSProperties}
+      />
+
+      <div ref={cardRef} className={styles.cardWrapper}>
+        <div 
+          className={styles.glassCard}
+          style={{ '--agent-color': agent.color } as React.CSSProperties}
+        >
+          <div className={styles.agentNumber}>{agent.code}</div>
+          
+          <div className={styles.iconWrapper}>
+            <Icon size={48} color={agent.color} strokeWidth={1.5} />
+          </div>
+
+          <div ref={contentRef} className={styles.content}>
+            <h3 className={styles.agentName}>{agent.name}</h3>
+            <div className={styles.agentRole}>
+              {agent.role}
+            </div>
+
+            <div className={styles.formula}>
+              <span className={styles.formulaPart}>{agent.formula.split('→')[0]}</span>
+              <span className={styles.arrow}>→</span>
+              <span className={styles.formulaPart}>{agent.formula.split('→')[1]}</span>
+            </div>
+
+            <div className={styles.divider} />
+            
+            <p className={styles.agentDesc}>{agent.desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function AgentShowcase() {
+  const lineRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!lineRef.current || !containerRef.current) return;
+
+    // The central line glowing progressively as you scroll
+    gsap.fromTo(
+      lineRef.current,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 50%',
+          end: 'bottom 80%',
+          scrub: true,
+        },
+      }
+    );
+  }, { scope: containerRef });
+
+  return (
+    <section className={styles.section} id="agents" ref={containerRef}>
+      
+      {/* Enhancement 1: Sparse floating particles */}
+      <VoidParticles />
+
+      {/* Background ambient light */}
+      <div className={styles.ambientGlow} />
+
+      <div className={styles.header}>
+        <p className={styles.label}>[ SYSTEM DIRECTIVE ]</p>
+        <h2 className={styles.title}>THE AGENT PROTOCOL</h2>
+        <p className={styles.subtitle}>
+          Five autonomous sentinels. One unified dimension.
+        </p>
+      </div>
+
+      <div className={styles.timelineContainer}>
+        {/* The central glowing neural link */}
+        <div className={styles.centerLineTrack}>
+          <div ref={lineRef} className={styles.centerLineFill} />
+        </div>
+
+        {AGENTS.map((agent, index) => (
+          <AgentCard key={agent.code} agent={agent} index={index} />
+        ))}
+      </div>
+    </section>
+  );
+}

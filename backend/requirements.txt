@@ -1,0 +1,37 @@
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# SAMAS - Dependencies
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+# Agent orchestration framework â€” the backbone of our multi-agent system.
+# LangGraph lets us define agents as state machines with nodes, edges,
+# conditional routing, and human-in-the-loop patterns.
+langgraph>=0.4.0
+
+# LangChain's OpenAI integration â€” we use this to talk to OpenRouter
+# (which is OpenAI-compatible). Gives us ChatOpenAI with streaming support.
+langchain-openai>=0.3.0
+langchain-core>=0.3.0
+
+# Resume text extraction â€” pdfplumber is the best Python PDF extractor
+# for resumes because it handles multi-column layouts, tables, and
+# weird formatting better than PyPDF2 or pdfminer.
+pdfplumber>=0.11.0
+
+# DOCX parsing â€” for candidates who upload Word documents instead of PDFs.
+python-docx>=1.0.0
+
+# Async HTTP client â€” we use this for web scraping (Jina Reader)
+# and GitHub API calls. httpx > requests because it supports async natively.
+httpx>=0.27.0
+
+# Data validation â€” Pydantic v2 powers our entire schema system.
+# Every piece of data flows through Pydantic models for type safety.
+pydantic>=2.0.0
+
+# Environment variable management â€” keeps API keys out of code.
+python-dotenv>=1.0.0
+
+# Vector Database & Embeddings
+pinecone-client>=3.0.0
+langchain-pinecone
+scikit-learn>=1.3.0

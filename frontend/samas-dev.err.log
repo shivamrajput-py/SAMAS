@@ -1,0 +1,2955 @@
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_1ybzpk2._.js:2477:13)
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  [90m2 |[0m
+  [90m3 |[0m [36mimport[0m { useEffect, useRef } [36mfrom[0m [32m'react'[0m;
+[31m[1m>[0m [90m4 |[0m [36mimport[0m [33mSamasHero[0m [36mfrom[0m [32m'@/components/landing/SamasHero'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mimport[0m [33mAgentShowcase[0m [36mfrom[0m [32m'@/components/landing/AgentShowcase'[0m;
+  [90m6 |[0m [36mimport[0m [33mLandingFooter[0m [36mfrom[0m [32m'@/components/landing/LandingFooter'[0m;
+  [90m7 |[0m [36mimport[0m styles [36mfrom[0m [32m'./landing.module.css'[0m;
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./src/app/page.tsx:4:1
+Module not found: Can't resolve '@/components/landing/SamasHero'
+  2 |
+  3 | import { useEffect, useRef } from 'react';
+> 4 | import SamasHero from '@/components/landing/SamasHero';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import AgentShowcase from '@/components/landing/AgentShowcase';
+  6 | import LandingFooter from '@/components/landing/LandingFooter';
+  7 | import styles from './landing.module.css';
+
+Import map: aliased to relative './src/components/landing/SamasHero' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./src/app/page.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./src/app/page.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 |
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 |
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 |
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+⨯ ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  [90m3 |[0m [36mimport[0m { useCallback, useRef, useState } [36mfrom[0m [32m'react'[0m;
+  [90m4 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SamasHero.module.css'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m
+  [90m7 |[0m [36mtype[0m [33mActiveSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'center'[0m;
+  [90m8 |[0m [36mtype[0m [33mReflectSide[0m = [32m'left'[0m | [32m'right'[0m | [32m'none'[0m;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./src/components/landing/SamasHero.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/components/landing/SamasHero.tsx:5:1
+Module not found: Can't resolve './SamasHero.module.css'
+  3 | import { useCallback, useRef, useState } from 'react';
+  4 | import Link from 'next/link';
+> 5 | import styles from './SamasHero.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | type ActiveSide = 'left' | 'right' | 'center';
+  8 | type ReflectSide = 'left' | 'right' | 'none';
+
+Import traces:
+  Client Component Browser:
+    ./src/components/landing/SamasHero.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/landing/SamasHero.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_1ybzpk2._.js:2477:13)
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  [90m1 |[0m [36mimport[0m [36mtype[0m { [33mMetadata[0m } [36mfrom[0m [32m"next"[0m;
+[31m[1m>[0m [90m2 |[0m [36mimport[0m [32m"./globals.css"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m3 |[0m
+  [90m4 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m5 |[0m   title: [32m"SAMAS - Multi-Agent Job System"[0m,
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from "next";
+> 2 | import "./globals.css";
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export const metadata: Metadata = {
+  5 |   title: "SAMAS - Multi-Agent Job System",
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./src/app/layout.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./src/app/layout.tsx:2:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from "next";
+> 2 | import "./globals.css";
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export const metadata: Metadata = {
+  5 |   title: "SAMAS - Multi-Agent Job System",
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from "next";
+> 2 | import "./globals.css";
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export const metadata: Metadata = {
+  5 |   title: "SAMAS - Multi-Agent Job System",
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] ./src/app/layout.tsx:2:1
+Module not found: Can't resolve './globals.css'
+  1 | import type { Metadata } from "next";
+> 2 | import "./globals.css";
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export const metadata: Metadata = {
+  5 |   title: "SAMAS - Multi-Agent Job System",
+
+https://nextjs.org/docs/messages/module-not-found 
+    at handleErrors (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+    at processMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2835:28)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2680:13)
+    at WebSocket.handleMessage (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2325:17) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_client_16lnmlo._.js:2774:21)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_1ybzpk2._.js:2477:13)
+[browser] TypeError: Failed to fetch
+    at handleUpload (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/src_0r0ldal._.js:1460:31)
+    at handleSubmit (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/src_0r0ldal._.js:263:9)
+    at executeDispatch (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10329:13)
+    at runWithFiberInDEV (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)
+    at processDispatchQueue (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10355:41)
+    at <unknown> (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10633:13)
+    at batchedUpdates$1 (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:2253:44)
+    at dispatchEventForPluginEventSystem (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10431:9)
+    at dispatchEvent (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:13002:37)
+    at dispatchDiscreteEvent (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:12984:64) (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/src_0r0ldal._.js:1447:17)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/98shi/True Job/frontend/.next/dev/static/chunks/node_modules_next_dist_1ybzpk2._.js:2477:13)

@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 4%;
+    --foreground: 0 0% 100%;
+    --card: 240 15% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 15% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 187 94% 43%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 263 70% 50% / 0.15;
+    --input: 240 10% 15%;
+    --ring: 263 70% 50%;
+    --radius: 1.25rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: #0A0A0F;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0A0A0F;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  @media (hover: none) {
+    body {
+      cursor: auto;
+    }
+  }
+}
+
+@layer components {
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hero-m-glow {
+    text-shadow:
+      0 0 60px rgba(124, 58, 237, 0.3),
+      0 0 120px rgba(6, 182, 212, 0.15);
+  }
+
+  .mirror-line {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(124, 58, 237, 0.4),
+      rgba(6, 182, 212, 0.3),
+      transparent
+    );
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 20px;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.1);
+  }
+
+  .agent-glow-prism {
+    border-color: rgba(124, 58, 237, 0.3);
+  }
+  .agent-glow-prism:hover {
+    border-color: rgba(124, 58, 237, 0.6);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.15);
+  }
+
+  .agent-glow-oracle {
+    border-color: rgba(6, 182, 212, 0.3);
+  }
+  .agent-glow-oracle:hover {
+    border-color: rgba(6, 182, 212, 0.6);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
+  }
+
+  .agent-glow-radar {
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+  .agent-glow-radar:hover {
+    border-color: rgba(236, 72, 153, 0.6);
+    box-shadow: 0 0 40px rgba(236, 72, 153, 0.15);
+  }
+
+  .agent-glow-cortex {
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+  .agent-glow-cortex:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.15);
+  }
+
+  .agent-glow-nexus {
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  .agent-glow-nexus:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.15);
+  }
+}
+
+@layer utilities {
+  .text-gradient-violet-cyan {
+    background: linear-gradient(135deg, #7C3AED, #06B6D4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-cyan-violet {
+    background: linear-gradient(135deg, #06B6D4, #7C3AED);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* M letter shimmer animation */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 60px rgba(124, 58, 237, 0.3),
+      0 0 120px rgba(6, 182, 212, 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 80px rgba(124, 58, 237, 0.5),
+      0 0 160px rgba(6, 182, 212, 0.25);
+  }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(8px); }
+}
+
+@keyframes light-ray-left {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes light-ray-right {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
