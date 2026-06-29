@@ -133,11 +133,11 @@ class ExtractedEducation(BaseModel):
     institution: str = Field(
         description="Name of the university, college, or school"
     )
-    degree: str = Field(
-        description="Degree type: B.Tech, B.Sc, M.S., MBA, Ph.D., etc."
+    degree: Optional[str] = Field(
+        None, description="Degree type: B.Tech, B.Sc, M.S., MBA, Ph.D., etc."
     )
-    field_of_study: str = Field(
-        description="Major or specialization: Computer Science, Electronics, etc."
+    field_of_study: Optional[str] = Field(
+        None, description="Major or specialization: Computer Science, Electronics, etc."
     )
     start_date: Optional[str] = Field(
         None, description="Start date in any format the resume uses"
