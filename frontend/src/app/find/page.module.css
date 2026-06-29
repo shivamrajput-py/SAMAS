@@ -17,7 +17,7 @@
 }
 
 .cornerHUD {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 2rem;
   right: 2rem;
@@ -198,3 +198,36 @@
     display: none; /* Hide long text on mobile */
   }
 }
+
+@media (max-width: 768px) {
+  .layoutWrapper {
+    padding: 2rem 1rem 5rem 1rem;
+  }
+  .timelineRow {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .agentCol {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .cornerHUD {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+
+.layoutWrapper {
+  max-width: 1600px; /* Expand from 1400px */
+}
+.timelineRow {
+  gap: 3rem; /* Reduce gap from 5rem to give cards more space */
+}
+@media (max-width: 768px) {
+  .layoutWrapper {
+    padding: 2rem 1rem 5rem 1rem; /* Maximize mobile screen real estate */
+  }
+}
+

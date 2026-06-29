@@ -21,7 +21,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SAMAS — Where AI Mirrors Your Potential",
+  title: "SAMAS | Where AI Mirrors Your Potential",
   description:
     "SAMAS is a Multi-Agent System that finds the job you deserve and guides you to your best potential by mapping what you need to learn.",
 };

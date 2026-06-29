@@ -27,7 +27,9 @@ export default function LandingFooter() {
       </div>
       
       <div className={styles.bottomBar}>
-        <span className={styles.copy}>© 2026 SAMAS NETWORK.</span>
+        <div className={styles.credit}>
+          ARCHITECTED BY <a href="https://www.linkedin.com/in/shivam-rajput-3928a328a/" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>SHIVAM</a>
+        </div>
         <div className={styles.links}>
           <Link href="/find" className={styles.link}>ENTER SYSTEM</Link>
         </div>

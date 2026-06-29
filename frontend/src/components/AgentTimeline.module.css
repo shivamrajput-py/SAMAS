@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding-left: 1rem;
+  padding-left: 3rem; /* 48px */
   padding-top: 2rem;
   padding-bottom: 4rem;
 }
@@ -22,7 +22,7 @@
   position: absolute;
   top: 4rem;
   bottom: 0;
-  left: 0;
+  left: 1rem; /* Aligns exactly with connection point: padding (3rem) - dot offset (2rem) = 1rem */
   width: 2px;
   background: rgba(255, 255, 255, 0.1);
   z-index: 1;
@@ -31,8 +31,8 @@
 .centerLineFill {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 1rem;
+  width: 2px;
   background: #ffffff;
   transition: height 0.5s ease;
 }
@@ -242,3 +242,27 @@
   50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(0.8); opacity: 0.5; }
 }
+
+@media (max-width: 768px) {
+  .timelineContainer {
+    padding-left: 1.5rem; /* Give dot room on left without stealing too much from card width */
+    padding-right: 0.5rem;
+  }
+  .connectionPoint {
+    left: -1.25rem; /* Move dot closer to card so timeline takes less horizontal space */
+  }
+  .glassCard {
+    padding: 1rem; /* Maximize internal card space */
+  }
+  .formula {
+    flex-wrap: wrap; /* Prevent formula from pushing card width out */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .centerLineTrack, .centerLineFill {
+    left: 0.25rem;
+  }
+}
+

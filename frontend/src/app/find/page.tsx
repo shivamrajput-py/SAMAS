@@ -17,7 +17,7 @@ type FlowState = 'upload' | 'loading_profile' | 'interview' | 'evaluating' | 'ti
 
 export default function FindPage() {
   // Dynamically resolve the backend URL. Prioritize environment variable for production (Cloudflare/Vercel)
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? `http://${window.location.hostname}:8000` : 'http://127.0.0.1:8000');
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:8000` : 'http://127.0.0.1:8000');
   
   const [flowState, setFlowState] = useState<FlowState>('upload');
   const [errorMsg, setErrorMsg] = useState<string>('');
@@ -496,7 +496,7 @@ export default function FindPage() {
           {/* RADAR ROW */}
           <div className={styles.timelineRow}>
             <div className={styles.agentCol}>
-              {renderAgentCard('search', '03', 'RADAR', 'MARKET SWEEPER', 'LLM title suggestion → SerpAPI multi-query search → cross-source deduplication → relevance ranking. Parallel search across job boards.', '#c2a886', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Global Targets</span></>)}
+              {renderAgentCard('search', '03', 'RADAR', 'MARKET SWEEPER', 'Location fan-out → Cartesian parallel SerpAPI execution → deduplication. Massive scale global search across multiple job boards simultaneously.', '#c2a886', <><span className={timelineStyles.formulaPart}>Profile</span><span className={timelineStyles.arrow}>→</span><span className={timelineStyles.formulaPart}>Global Targets</span></>)}
             </div>
             <div className={styles.workspaceCol}>
               {flowState === 'title_select' && (

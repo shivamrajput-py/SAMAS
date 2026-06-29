@@ -246,3 +246,22 @@
     letter-spacing: 0.2em;
   }
 }
+
+.credit {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 1rem;
+}
+.creditLink {
+  color: #d47a43;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+.creditLink:hover {
+  color: #ffffff;
+}
+

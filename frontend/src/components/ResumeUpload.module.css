@@ -192,3 +192,13 @@
   color: #ffffff;
   padding: 10px;
 }
+
+@media (max-width: 768px) {
+  .uploadCard {
+    padding: 1.25rem;
+  }
+  .dropZone {
+    padding: 1rem 0.5rem;
+  }
+}
+

@@ -37,7 +37,7 @@ export default function ResumeUpload({ onSubmit, isLoading }: Props) {
     <div className={`glass-panel ${styles.uploadCard}`}>
       <h2 className={styles.title}>INITIALIZE PRISM</h2>
       <p className={styles.subtitle}>
-        Upload your resume. SAMAS agents take it from there.
+        Upload your base identity document. SAMAS multi-agent intelligence takes over from there.
       </p>
 
       <form onSubmit={handleSubmit} className={styles.form}>

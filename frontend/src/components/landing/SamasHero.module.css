@@ -495,7 +495,7 @@
    ============================================ */
 .scrollIndicator {
   position: absolute;
-  bottom: 3vh;
+  bottom: 6vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -534,3 +534,46 @@
   0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
   50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
 }
+
+@media (max-width: 768px) {
+  .saHitbox, .asHitbox {
+    position: relative;
+    right: auto;
+    left: auto;
+    padding: 0 2px;
+  }
+  .saText, .asText {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+  .centerM {
+    font-size: clamp(3rem, 15vw, 6rem);
+    height: auto;
+    width: auto;
+  }
+  .mText {
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+  .textTrack {
+    gap: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hudTopRight {
+    display: none;
+  }
+  .hudBottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .cornerHUD {
+    padding: 20px;
+  }
+}
+

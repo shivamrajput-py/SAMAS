@@ -25,7 +25,7 @@ const AGENTS: Agent[] = [
     name: 'PRISM',
     role: 'Identity Architect',
     formula: 'Resume → Verified Profile',
-    desc: 'You upload your resume and links. This agent reads everything — your PDF, your GitHub, your portfolio — and builds a verified skill profile with proof scores. No fluff, just facts.',
+    desc: 'You upload your resume and links. This agent reads everything (your PDF, your GitHub, your portfolio) and builds a verified skill profile with proof scores. No fluff, just facts.',
     color: '#d47a43', // Earthy Amber
     icon: Hexagon
   },
