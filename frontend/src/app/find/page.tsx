@@ -16,10 +16,12 @@ import LandingFooter from '@/components/landing/LandingFooter';
 type FlowState = 'upload' | 'loading_profile' | 'interview' | 'evaluating' | 'title_select' | 'searching' | 'results' | 'error';
 
 export default function FindPage() {
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+  // Dynamically resolve the backend URL to bypass Next.js proxy timeout while supporting network access
+  const API_BASE_URL = typeof window !== 'undefined' ? `http://${window.location.hostname}:8000` : 'http://127.0.0.1:8000';
   
   const [flowState, setFlowState] = useState<FlowState>('upload');
   const [errorMsg, setErrorMsg] = useState<string>('');
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
   
   const [threadId, setThreadId] = useState<string>('');
   const [profile, setProfile] = useState<any>(null);
@@ -57,9 +59,20 @@ export default function FindPage() {
   const [modelName, setModelName] = useState<string>('qwen/qwen3.7-plus');
 
   const handleError = (msg: string, err: any) => {
+    if (err.name === 'AbortError') {
+      console.log('Request aborted by user');
+      return;
+    }
     console.error(err);
     setErrorMsg(`${msg}: ${err.message || 'Unknown error'}`);
     setFlowState('error');
+  };
+
+  const handleStartOver = () => {
+    if (abortController) {
+      abortController.abort();
+    }
+    setFlowState('upload');
   };
 
   // Phase 1: Upload Resume
@@ -76,10 +89,14 @@ export default function FindPage() {
     if (key) formData.append('api_key', key);
     if (model) formData.append('model_name', model);
 
+    const controller = new AbortController();
+    setAbortController(controller);
+    
     try {
       const res = await fetch(`${API_BASE_URL}/api/upload_resume/stream`, {
         method: 'POST',
         body: formData,
+        signal: controller.signal,
       });
       
       if (!res.ok) throw new Error(await res.text());
@@ -149,6 +166,9 @@ export default function FindPage() {
   const fetchQuestions = async (userProfile: any, key: string, model: string) => {
     setActiveAgentId('interview');
     setFlowState('interview');
+    const controller = new AbortController();
+    setAbortController(controller);
+    
     try {
       const res = await fetch(`${API_BASE_URL}/api/interview/start`, {
         method: 'POST',
@@ -158,6 +178,7 @@ export default function FindPage() {
           api_key: key,
           model_name: model
         }),
+        signal: controller.signal,
       });
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
@@ -201,6 +222,9 @@ export default function FindPage() {
       }
     }, 2500);
 
+    const controller = new AbortController();
+    setAbortController(controller);
+    
     try {
       const formattedAnswers = answers.map((ans, idx) => ({
         question_id: questions[idx].question_id,
@@ -216,6 +240,7 @@ export default function FindPage() {
           api_key: apiKey,
           model_name: modelName
         }),
+        signal: controller.signal,
       });
       if (!res1.ok) throw new Error(await res1.text());
       const evalData = await res1.json();
@@ -235,6 +260,7 @@ export default function FindPage() {
           api_key: apiKey,
           model_name: modelName
         }),
+        signal: controller.signal,
       });
       if (!res2.ok) throw new Error(await res2.text());
       const titleData = await res2.json();
@@ -254,6 +280,9 @@ export default function FindPage() {
   // Phases 3b, 4, 5: Execute full search
   const handleExecuteSearch = async () => {
     setFlowState('searching');
+    const controller = new AbortController();
+    setAbortController(controller);
+    
     try {
       const titles = customTitles.split(',').map(t => t.trim()).filter(t => t);
       setActiveAgentId('search');
@@ -269,6 +298,7 @@ export default function FindPage() {
           api_key: apiKey,
           model_name: modelName
         }),
+        signal: controller.signal,
       });
       
       if (!res.ok) throw new Error(await res.text());
@@ -413,7 +443,7 @@ export default function FindPage() {
         {flowState === 'error' && (
           <div className={styles.errorBox}>
             <span><strong>System Error:</strong> {errorMsg}</span>
-            <button onClick={() => setFlowState('upload')} style={{ padding: '0.5rem 1rem', background: '#F43F5E', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Start Over</button>
+            <button onClick={handleStartOver} style={{ padding: '0.5rem 1rem', background: '#F43F5E', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Start Over</button>
           </div>
         )}
 

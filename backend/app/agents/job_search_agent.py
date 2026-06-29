@@ -56,16 +56,26 @@ def _build_title_suggestion_prompt(profile: dict) -> str:
     experience = profile.get("work_experience", [])
     latest_role = experience[0].get("title", "Unknown") if experience else "Unknown"
     
-    prompt = f"""You are an expert career advisor. Based on the candidate's verified skills and experience, suggest exactly 3 different job titles they should search for.
+    # Calculate approximate years of experience
+    total_exp_entries = len(experience)
+    
+    # Gather project info for better context
+    projects = profile.get("projects", [])
+    project_names = [p.get("name", "") for p in projects[:3]] if projects else []
+    
+    prompt = f"""You are an expert career advisor. Based on the candidate's profile, suggest exactly 3 job titles they should search for on job boards.
 
 LATEST ROLE: {latest_role}
+TOTAL WORK EXPERIENCE ENTRIES: {total_exp_entries}
 VERIFIED STRONG SKILLS: {', '.join(strong_skills)}
+NOTABLE PROJECTS: {', '.join(project_names) if project_names else 'None listed'}
 
 Guidelines:
-1. Provide standard industry job titles (e.g., "Frontend Developer", "Data Engineer").
-2. INFER SENIORITY: Look at their LATEST ROLE. If they are a "Senior", "Lead", or "Manager", include that seniority prefix in the suggested titles (e.g., "Senior Backend Developer"). If junior/fresher, leave it as the base title.
-3. Don't be too narrow ("Python FastAPI Developer"), but don't be too broad ("Engineer").
-4. Make them distinct but highly relevant to the skills.
+1. Suggest realistic, standard industry titles that match the candidate's ACTUAL experience level.
+2. DO NOT force "Senior" or "Lead" prefixes. Only include seniority if the candidate's latest role or experience clearly warrants it.
+3. Keep titles specific enough to be useful (e.g., "Frontend Developer", "Data Engineer") but not overly narrow (avoid "Python FastAPI Developer").
+4. Make titles distinct from each other to maximize search coverage.
+5. Consider the full tech stack and skills, not just the latest role.
 
 Return ONLY a JSON array of strings, like: ["Title 1", "Title 2", "Title 3"]
 """
@@ -98,7 +108,8 @@ async def suggest_titles_node(state: JobSearchState, config: RunnableConfig) -> 
             messages, 
             label="Title Suggestion",
             custom_api_key=custom_api_key,
-            custom_model=custom_model
+            custom_model=custom_model,
+            config=config
         )
         titles = result["data"]
         
@@ -241,19 +252,26 @@ def deduplicate_and_rank_node(state: JobSearchState) -> dict:
 # ═══════════════════════════════════════════════════════
 
 def route_searches(state: JobSearchState):
-    """The dynamic router that creates a Send() task for each selected title."""
+    """The dynamic router that creates a Send() task for each selected title and location."""
     selected_titles = state.get("selected_titles", [])
-    location = state.get("location", "India")
+    location_string = state.get("location", "India")
     
+    # Split by comma if the user provided multiple locations (e.g. "delhi, hyderabad, pune")
+    locations = [loc.strip() for loc in location_string.split(",") if loc.strip()]
+    if not locations:
+        locations = ["India"]
+        
     sends = []
     for title in selected_titles:
-        # Spawn a new parallel execution of the 'search_for_title' node
-        sends.append(
-            Send("search_for_title", {
-                "search_title": title,
-                "location": location
-            })
-        )
+        for loc in locations:
+            # Spawn a new parallel execution of the 'search_for_title' node
+            # This creates a Cartesian product (Title x Location)
+            sends.append(
+                Send("search_for_title", {
+                    "search_title": title,
+                    "location": loc
+                })
+            )
     return sends
 
 

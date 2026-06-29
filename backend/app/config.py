@@ -1,4 +1,4 @@
-﻿"""
+"""
 Centralized configuration for SAMAS.
 
 All settings are loaded from environment variables (.env file).
@@ -37,6 +37,10 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
 SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
 APIFY_TOKEN = os.getenv("APIFY_TOKEN", "")
+
+# ─── Pinecone Vector DB Configuration ────────────────────
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "samas-index")
 
 
 # â”€â”€â”€ Jina Reader Configuration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

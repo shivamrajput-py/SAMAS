@@ -1,6 +1,6 @@
 import json
 import asyncio
-from typing import List, Dict, TypedDict, Annotated
+from typing import List, Dict, TypedDict, Annotated, Any
 import operator
 import numpy as np
 
@@ -10,11 +10,12 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 
 # Local
-from app.llm import call_llm_with_fallback
+from app.llm import call_llm_with_fallback, get_embedder
 from app.models.job import JobListing
 from app.models.jd_requirements import JDRequirements
 from app.tools.text_utils import get_similar_company_jobs, clean_html
 from app.tools.ghost_detector import calculate_ghost_probability
+from app.utils.pinecone_hybrid import hybrid_upsert
 
 from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
@@ -51,30 +52,13 @@ class JDAnalyzerState(TypedDict):
     # Extracted requirements (job_id -> JDRequirements dict)
     extracted_requirements: Dict[str, dict]
     
+    search_location: str
+    
     # Vector store paths
     vector_store_ready: bool
 
 
-def _get_embedder(custom_api_key: str = None):
-    global _EMBEDDER
-    
-    # If custom key is provided, always create a new instance using that key
-    if custom_api_key:
-        print("   Loading embedding model with custom BYOK key...")
-        return OpenAIEmbeddings(
-            openai_api_base=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
-            openai_api_key=custom_api_key,
-            model="openai/text-embedding-3-small"
-        )
-        
-    if _EMBEDDER is None:
-        print("   Loading embedding model (OpenRouter / OpenAI)...")
-        _EMBEDDER = OpenAIEmbeddings(
-            openai_api_base=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
-            openai_api_key=os.environ.get("OPENROUTER_API_KEY"),
-            model="openai/text-embedding-3-small"
-        )
-    return _EMBEDDER
+
 
 # ═══════════════════════════════════════════════════════
 # NODE 1: DEEP DEDUPLICATION & SIMILARITY
@@ -106,32 +90,14 @@ def deep_deduplication_node(state: JDAnalyzerState) -> dict:
 # NODE 2: KEYWORD PRE-FILTER (Cost: ZERO)
 # ═══════════════════════════════════════════════════════
 
-def _quick_relevance_score(description: str, user_skills: List[str]) -> float:
-    """Count what fraction of the user's skills appear in the JD text.
-    
-    This is a dead-simple substring check — no ML, no embeddings,
-    no API calls. Runs in microseconds per job.
-    
-    Why this works:
-        If a JD for 'AI Engineer' mentions 0 out of your 15 skills,
-        it's almost certainly a mismatch (e.g. a hardware AI role, not software).
-        We don't need an LLM to tell us that.
-    """
-    desc_lower = description.lower()
-    if not user_skills:
-        return 1.0  # No skills to check against — let everything through
-    hits = sum(1 for skill in user_skills if skill.lower() in desc_lower)
-    return hits / len(user_skills)
-
-
 def keyword_prefilter_node(state: JDAnalyzerState) -> dict:
-    """Zero-cost pre-filter: drop jobs that mention NONE of the user's skills.
+    """Fast BM25 Pre-filter: rank jobs by keyword overlap and drop the bottom 25%.
     
     This is the first layer of the Filtering Funnel pattern:
-        Cheap filter → Expensive LLM → Precise embeddings
+        Fast BM25 Filter → Expensive LLM → Precise embeddings
     
-    We use a deliberately LOW threshold (any 1 skill match passes)
-    to avoid false negatives. The LLM will do the precise filtering later.
+    We drop the bottom 25% of jobs to save LLM tokens and latency. 
+    LangSmith traces will allow us to observe if this threshold should be adjusted.
     """
     jobs = state.get("unique_jobs", [])
     profile = state.get("user_profile", {})
@@ -151,51 +117,44 @@ def keyword_prefilter_node(state: JDAnalyzerState) -> dict:
         print(f"   No user skills found — skipping pre-filter (all {len(jobs)} jobs pass)")
         return {"filtered_jobs": jobs, "dropped_jobs": []}
     
-    print(f"\n[JD Analyzer] Step 2: Keyword Pre-Filter ({len(jobs)} jobs vs {len(user_skills)} skills)")
+    print(f"\n[JD Analyzer] Step 2: Keyword Pre-Filter (BM25) ({len(jobs)} jobs vs {len(user_skills)} skills)")
     
-    import statistics
+    import math
+    from rank_bm25 import BM25Okapi
     
-    job_scores = []
-    for job in jobs:
-        score = _quick_relevance_score(job.description, user_skills)
-        job_scores.append((job, score))
-        
+    # Prepare corpus for BM25
+    tokenized_corpus = [job.description.lower().split() for job in jobs]
+    bm25 = BM25Okapi(tokenized_corpus)
+    
+    # Prepare query
+    tokenized_query = " ".join(user_skills).lower().split()
+    
+    # Get scores
+    doc_scores = bm25.get_scores(tokenized_query)
+    
+    job_scores = list(zip(jobs, doc_scores))
+    
+    # Rank jobs (highest score first)
+    job_scores.sort(key=lambda x: x[1], reverse=True)
+    
+    # Drop bottom 25%
+    drop_count = math.floor(len(jobs) * 0.25)
+    keep_count = len(jobs) - drop_count
+    
     filtered = []
     dropped = []
     
-    if len(job_scores) > 5:
-        scores_only = [s for j, s in job_scores]
-        mean_score = statistics.mean(scores_only)
-        try:
-            stdev_score = statistics.stdev(scores_only)
-        except statistics.StatisticsError:
-            stdev_score = 0.0
+    for i, (job, score) in enumerate(job_scores):
+        if i >= keep_count:
+            job.pipeline_status = "dropped"
+            if not getattr(job, 'metadata', None):
+                job.metadata = {}
+            job.metadata["drop_reason"] = f"Low BM25 overlap score: {score:.2f}"
+            dropped.append(job)
+        else:
+            filtered.append(job)
             
-        # Drop jobs that are 1 standard deviation below the mean
-        # AND strictly less than 0.15 (to prevent dropping good jobs if the overall pool is amazing)
-        cutoff = min(mean_score - stdev_score, 0.15)
-        
-        for job, score in job_scores:
-            if score < cutoff or score == 0.0:
-                # Add metadata to the job model so the frontend can see why it was dropped
-                if not hasattr(job, 'metadata'):
-                    job.metadata = {}
-                job.metadata['drop_reason'] = f"Low keyword overlap: {score:.2f} (Cutoff: {cutoff:.2f})"
-                dropped.append(job)
-            else:
-                filtered.append(job)
-    else:
-        # Fallback for very small batches
-        for job, score in job_scores:
-            if score > 0.0:
-                filtered.append(job)
-            else:
-                if not hasattr(job, 'metadata'):
-                    job.metadata = {}
-                job.metadata['drop_reason'] = "Zero keyword overlap"
-                dropped.append(job)
-    
-    print(f"   Passed: {len(filtered)} jobs | Dropped: {len(dropped)} (distribution filtering)")
+    print(f"   Passed: {len(filtered)} jobs | Dropped: {len(dropped)} (BM25 bottom 25%)")
     if dropped:
         dropped_titles = [f"{j.title} [{j.metadata.get('drop_reason')}]" for j in dropped[:5]]
         print(f"   Sample dropped: {', '.join(dropped_titles)}")
@@ -281,7 +240,8 @@ Return ONLY valid JSON matching this schema:
                 [sys_msg, HumanMessage(content=prompt)], 
                 label="JD Analyzer",
                 custom_api_key=custom_api_key,
-                custom_model=custom_model
+                custom_model=custom_model,
+                config=config
             )
             data = resp["data"]
             
@@ -299,7 +259,7 @@ Return ONLY valid JSON matching this schema:
 # NODE 4: APPLY GHOST HEURISTICS & CREATE VECTORS
 # ═══════════════════════════════════════════════════════
 
-def finalize_and_embed_node(state: JDAnalyzerState, config: RunnableConfig) -> dict:
+async def finalize_and_embed_node(state: JDAnalyzerState, config: RunnableConfig) -> dict:
     """Apply heuristics, create the final objects, and embed them."""
     jobs = state.get("unique_jobs", [])
     extracted = state.get("extracted_requirements", {})
@@ -344,9 +304,9 @@ def finalize_and_embed_node(state: JDAnalyzerState, config: RunnableConfig) -> d
         final_extracted[job.id] = reqs.model_dump()
         
         # 2. Prepare text for embedding
-        # We embed the title, skills, and the first 1000 chars of the description
+        # We embed the title, location, skills, and the first 1000 chars of the description
         skills_text = ", ".join([s.name for s in reqs.required_skills])
-        embed_text = f"Title: {job.title}. Skills: {skills_text}. Description: {job.description[:1000]}"
+        embed_text = f"Title: {job.title}. Location: {job.location}. Skills: {skills_text}. Description: {job.description[:1000]}"
         texts_to_embed.append(embed_text)
         job_ids.append(job.id)
         
@@ -359,19 +319,20 @@ def finalize_and_embed_node(state: JDAnalyzerState, config: RunnableConfig) -> d
                 "vector_store_ready": False
             }
             
-        embedder = _get_embedder(custom_api_key=custom_api_key)
+        embedder = get_embedder(custom_api_key=custom_api_key)
         print("      Computing embeddings and uploading to Pinecone...")
         
-        # Prepare documents for Pinecone
-        docs = [
-            Document(page_content=text, metadata={"job_id": j_id}) 
-            for text, j_id in zip(texts_to_embed, job_ids)
-        ]
+        # Prepare metadata for Pinecone
+        metadatas = [{"job_id": j_id} for j_id in job_ids]
         
         index_name = os.environ.get("PINECONE_INDEX_NAME", "samas-index")
-        PineconeVectorStore.from_documents(
-            docs,
-            embedder,
+        
+        from app.utils.pinecone_hybrid import hybrid_upsert
+        await asyncio.to_thread(
+            hybrid_upsert,
+            texts=texts_to_embed,
+            metadatas=metadatas,
+            embedder=embedder,
             index_name=index_name
         )
             

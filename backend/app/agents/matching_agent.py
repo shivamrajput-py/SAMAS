@@ -12,10 +12,8 @@ from app.models.jd_requirements import JDRequirements
 from app.models.matched_job import MatchedJob
 
 from langchain_openai import OpenAIEmbeddings
-from langchain_pinecone import PineconeVectorStore
+from app.llm import get_embedder
 import os
-
-_EMBEDDER = None
 
 class MatchingState(TypedDict):
     """Main state for the Matching & Ranking Agent."""
@@ -23,29 +21,16 @@ class MatchingState(TypedDict):
     extracted_requirements: Dict[str, dict]
     user_profile: dict
     
-    # Results
-    matched_jobs: List[MatchedJob]
+    # Final output
+    matched_jobs: list
+    
+    # Context
+    search_location: str
 
 
 from langchain_core.runnables import RunnableConfig
 
-def _get_embedder(custom_api_key: str = None):
-    global _EMBEDDER
-    if custom_api_key:
-        print("   Loading embedding model with custom BYOK key...")
-        return OpenAIEmbeddings(
-            openai_api_base=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
-            openai_api_key=custom_api_key,
-            model="openai/text-embedding-3-small"
-        )
-        
-    if _EMBEDDER is None:
-        _EMBEDDER = OpenAIEmbeddings(
-            openai_api_base=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
-            openai_api_key=os.environ.get("OPENROUTER_API_KEY"),
-            model="openai/text-embedding-3-small"
-        )
-    return _EMBEDDER
+
 
 # ═══════════════════════════════════════════════════════
 # MATH SCORING ENGINE
@@ -142,18 +127,25 @@ def score_jobs_node(state: MatchingState, config: RunnableConfig) -> dict:
     
     # 2. Get profile embedding & query Pinecone
     try:
-        embedder = _get_embedder(custom_api_key=custom_api_key)
+        embedder = get_embedder(custom_api_key=custom_api_key)
         profile_text = f"Professional Summary: {profile.get('personal_info', {}).get('professional_summary', '')} Skills: {', '.join(user_skills_dict.keys())}"
         
         index_name = os.environ.get("PINECONE_INDEX_NAME", "samas-index")
-        vectorstore = PineconeVectorStore(index_name=index_name, embedding=embedder)
         
-        # Search all
-        results = vectorstore.similarity_search_with_score(profile_text, k=len(jobs) if jobs else 100)
+        from app.utils.pinecone_hybrid import hybrid_search
         
-        # results is a list of (Document, score) tuples.
+        # Search using hybrid retrieval (50% semantic, 50% keyword)
+        results = hybrid_search(
+            query=profile_text, 
+            embedder=embedder, 
+            top_k=len(jobs) if jobs else 100, 
+            index_name=index_name,
+            alpha=0.5
+        )
+        
+        # results is a list of (metadata_dict, score) tuples.
         # Map job_id metadata to score
-        sim_scores = {doc.metadata.get("job_id"): score for doc, score in results if doc.metadata.get("job_id")}
+        sim_scores = {metadata.get("job_id"): score for metadata, score in results if metadata.get("job_id")}
         
     except Exception as e:
         print(f"   Pinecone Error: {e}. Falling back to 0.5 embedding score.")
@@ -226,6 +218,16 @@ def score_jobs_node(state: MatchingState, config: RunnableConfig) -> dict:
                 proof_alignment_score * 0.20
             )
             
+        # --- COMPONENT 5: Location Boost ---
+        search_loc = state.get("search_location", "")
+        if search_loc and search_loc.lower() not in ["india", "remote"]:
+            # If the user's specific location is mentioned in the job location, boost the score
+            if search_loc.lower() in job.location.lower():
+                match_score = min(1.0, match_score + 0.15)
+        elif search_loc and search_loc.lower() == "remote":
+            if "remote" in job.location.lower() or "work from home" in job.location.lower():
+                match_score = min(1.0, match_score + 0.15)
+            
         # --- TIER CLASSIFICATION ---
         tier = "filtered"
         if reqs.ghost_probability > 0.70:
@@ -237,7 +239,9 @@ def score_jobs_node(state: MatchingState, config: RunnableConfig) -> dict:
         elif match_score > 0.30:
             tier = "stretch_goal"
             
-        if len(missing_skills) == 0:
+        if not reqs.required_skills or len(reqs.required_skills) == 0:
+            gap_summary = "No specific technical requirements were found in the job description."
+        elif len(missing_skills) == 0:
             gap_summary = "You meet all extracted technical requirements."
         elif len(missing_skills) <= 2:
             gap_summary = f"You're very close. Brush up on: {', '.join(missing_skills)}."

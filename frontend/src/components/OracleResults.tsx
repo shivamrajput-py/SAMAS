@@ -15,7 +15,13 @@ export default function OracleResults({ profile }: Props) {
   const correctMCQs = profile.questions?.filter((q: any) => {
     if (q.question_type !== 'mcq') return false;
     const answer = profile.answers?.find((a: any) => a.question_id === q.question_id);
-    return answer && answer.answer === q.options[q.correct_option_index];
+    if (!answer) return false;
+    
+    // Convert selected letter (e.g., 'a') to index (0) and compare with correct index
+    const ansText = answer.user_answer || answer.answer;
+    const selectedLetter = ansText?.toLowerCase();
+    const selectedIndex = selectedLetter ? selectedLetter.charCodeAt(0) - 97 : -1;
+    return selectedIndex === q.correct_option_index;
   }).length || 0;
 
   const writtenQuestions = profile.questions?.filter((q: any) => q.question_type === 'written') || [];
@@ -78,9 +84,16 @@ export default function OracleResults({ profile }: Props) {
           {profile.questions && profile.questions.map((q: any, idx: number) => {
             const evaluation = profile.evaluations?.find((e: any) => e.question_id === q.question_id);
             const answer = profile.answers?.find((a: any) => a.question_id === q.question_id);
+            const ansText = answer?.user_answer || answer?.answer;
             
             const isMCQ = q.question_type === 'mcq';
-            const isCorrectMCQ = isMCQ && answer?.answer === q.options[q.correct_option_index];
+            
+            let isCorrectMCQ = false;
+            if (isMCQ && ansText) {
+              const selectedIndex = ansText.toLowerCase().charCodeAt(0) - 97;
+              isCorrectMCQ = selectedIndex === q.correct_option_index;
+            }
+            
             const answerColor = isMCQ ? (isCorrectMCQ ? '#10B981' : '#F43F5E') : '#d1d1d6';
             
             return (
@@ -95,7 +108,7 @@ export default function OracleResults({ profile }: Props) {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
                       {q.options?.map((opt: string, i: number) => {
                         const letter = String.fromCharCode(97 + i); // a, b, c, d
-                        const isSelected = answer?.answer?.toLowerCase() === letter;
+                        const isSelected = ansText?.toLowerCase() === letter;
                         const isCorrect = q.options[q.correct_option_index] === opt;
                         
                         let bgColor = 'rgba(255, 255, 255, 0.05)';
@@ -135,7 +148,7 @@ export default function OracleResults({ profile }: Props) {
                     <>
                       <div className={styles.aLabel}>Your Answer:</div>
                       <div className={styles.aText} style={{ color: answerColor }}>
-                        {answer?.answer || "No answer provided"}
+                        {ansText || "No answer provided"}
                       </div>
                     </>
                   )}

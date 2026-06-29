@@ -65,6 +65,19 @@
   --border-light: rgba(255, 255, 255, 0.1);
   --border-focus: var(--border-glow);
   --font-mono: var(--font-body);
+  --font-sans: var(--font-body);
+  --accent-purple: #8b5cf6;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============================================

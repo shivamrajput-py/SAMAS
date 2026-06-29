@@ -24,3 +24,4 @@ class JobListing(BaseModel):
     source: str = Field(..., description="'serpapi', 'linkedin', etc.")
     search_title: str = Field(..., description="Which generated title search found this job")
     metadata: Optional[Dict[str, Any]] = Field(default_factory=dict, description="Internal metadata like drop_reason")
+    pipeline_status: Optional[str] = Field(None, description="Status in the matching pipeline")

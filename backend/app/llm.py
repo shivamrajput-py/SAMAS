@@ -24,7 +24,7 @@ import re
 import asyncio
 from typing import List, Optional
 
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.messages import BaseMessage
 
 from app.config import OPENROUTER_API_KEY, OPENROUTER_MODEL, OPENROUTER_BASE_URL
@@ -116,12 +116,15 @@ def parse_llm_json_response(content: str) -> dict | list:
     )
 
 
+from langchain_core.runnables.config import RunnableConfig
+
 async def call_llm_with_fallback(
     messages: List[BaseMessage],
     models: Optional[List[str]] = None,
     label: str = "LLM",
     custom_api_key: Optional[str] = None,
     custom_model: Optional[str] = None,
+    config: Optional[RunnableConfig] = None,
 ) -> dict:
     """Call an LLM with automatic model fallback and JSON parsing.
     
@@ -131,6 +134,7 @@ async def call_llm_with_fallback(
         label: Label for logging (e.g., "Question Generator")
         custom_api_key: BYOK API Key
         custom_model: BYOK Model Name
+        config: LangChain RunnableConfig to preserve tracing context.
         
     Returns:
         Dict with keys:
@@ -148,17 +152,18 @@ async def call_llm_with_fallback(
     last_error = None
     
     for model_name in models_to_try:
-        print(f"   🔄 [{label}] Trying model: {model_name}")
+        print(f"   [*] [{label}] Trying model: {model_name}")
         llm = get_llm(model_name, custom_api_key)
         
         try:
-            response = await llm.ainvoke(messages)
+            # Pass the config context so LangSmith can trace the LLM as a child of the graph node
+            response = await llm.ainvoke(messages, config=config)
             raw_content = response.content
             
             if not raw_content or not raw_content.strip():
                 raise ValueError("LLM returned empty response")
             
-            print(f"   ✓ [{label}] {model_name} responded ({len(raw_content)} chars)")
+            print(f"   [+] [{label}] {model_name} responded ({len(raw_content)} chars)")
             
             parsed = parse_llm_json_response(raw_content)
             return {
@@ -169,10 +174,35 @@ async def call_llm_with_fallback(
             
         except Exception as e:
             last_error = str(e)
-            print(f"   ✗ [{label}] {model_name} failed: {last_error[:120]}")
+            print(f"   [-] [{label}] {model_name} failed: {last_error[:120]}")
             await asyncio.sleep(1)
             continue
     
     raise RuntimeError(
         f"[{label}] All models failed. Last error: {last_error}"
     )
+
+_EMBEDDER = None
+
+def get_embedder(custom_api_key: str = None) -> OpenAIEmbeddings:
+    """Create a singleton embedding model client (OpenRouter / OpenAI)."""
+    global _EMBEDDER
+    
+    # If custom key is provided, always create a new instance using that key
+    if custom_api_key:
+        print("   Loading embedding model with custom BYOK key...")
+        return OpenAIEmbeddings(
+            openai_api_base=OPENROUTER_BASE_URL,
+            openai_api_key=custom_api_key,
+            model="openai/text-embedding-3-small"
+        )
+        
+    if _EMBEDDER is None:
+        print("   Loading embedding model (OpenRouter / OpenAI)...")
+        _EMBEDDER = OpenAIEmbeddings(
+            openai_api_base=OPENROUTER_BASE_URL,
+            openai_api_key=OPENROUTER_API_KEY,
+            model="openai/text-embedding-3-small"
+        )
+    return _EMBEDDER
+

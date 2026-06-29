@@ -6,6 +6,7 @@ import uuid
 import json
 import os
 import sys
+import asyncio
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
@@ -20,6 +21,7 @@ if sys.platform == "win32":
 from langgraph.types import Command
 from langgraph.checkpoint.memory import MemorySaver
 
+
 from app.agents.profile_builder import build_profile_builder_graph
 from app.agents.interview_agent import build_interview_graph
 from app.agents.job_search_agent import build_job_search_graph
@@ -33,7 +35,7 @@ app = FastAPI(title="SAMAS API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -53,6 +55,9 @@ async def upload_resume(
     urls: Optional[str] = Form(None)
 ):
     """Phase 1: Profile Builder"""
+    if not file.filename.lower().endswith(('.pdf', '.docx', '.txt')):
+        raise HTTPException(status_code=400, detail="Invalid file type. Only PDF, DOCX, and TXT are supported.")
+        
     # Save uploaded file
     suffix = Path(file.filename).suffix
     with NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
@@ -106,7 +111,8 @@ async def start_interview(payload: InterviewStartPayload):
             "thread_id": thread_id,
             "custom_api_key": payload.api_key,
             "custom_model": payload.model_name
-        }
+        },
+        "run_name": "InterviewQuestionAgent"
     }
     
     initial_state = {
@@ -144,7 +150,8 @@ async def submit_interview(payload: InterviewSubmitPayload):
             "thread_id": payload.thread_id,
             "custom_api_key": payload.api_key,
             "custom_model": payload.model_name
-        }
+        },
+        "run_name": "InterviewEvalAgent"
     }
     
     # Resume with answers
@@ -191,7 +198,8 @@ async def search_titles(payload: SearchStartPayload):
             "thread_id": thread_id,
             "custom_api_key": payload.api_key,
             "custom_model": payload.model_name
-        }
+        },
+        "run_name": "TitleSuggestAgent"
     }
     
     initial_state = {
@@ -222,6 +230,9 @@ async def upload_resume_stream(
     model_name: Optional[str] = Form(None)
 ):
     """Phase 1: Profile Builder (SSE Stream)"""
+    if not file.filename.lower().endswith(('.pdf', '.docx', '.txt')):
+        raise HTTPException(status_code=400, detail="Invalid file type. Only PDF, DOCX, and TXT are supported.")
+        
     suffix = Path(file.filename).suffix
     with NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
         content = await file.read()
@@ -246,7 +257,8 @@ async def upload_resume_stream(
             "thread_id": thread_id,
             "custom_api_key": api_key,
             "custom_model": model_name
-        }
+        },
+        "run_name": "ProfileBuilderAgent"
     }
     
     async def event_generator():
@@ -261,15 +273,23 @@ async def upload_resume_stream(
             user_profile = final_state.get("user_profile", {})
             
             if not user_profile:
-                yield f"data: {json.dumps({'type': 'error', 'message': 'Failed to build profile'})}\n\n"
+                errors = final_state.get("errors", [])
+                err_msg = " | ".join(errors) if errors else 'Failed to build profile'
+                yield f"data: {json.dumps({'type': 'error', 'message': err_msg})}\n\n"
             else:
                 yield f"data: {json.dumps({'type': 'complete', 'thread_id': thread_id, 'user_profile': user_profile})}\n\n"
                 
+        except asyncio.CancelledError:
+            print(f"Client disconnected during profile build (thread: {thread_id})")
+            raise
         except Exception as e:
             yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
         finally:
             if os.path.exists(tmp_path):
-                os.unlink(tmp_path)
+                try:
+                    os.unlink(tmp_path)
+                except Exception:
+                    pass
                 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
@@ -279,6 +299,7 @@ class SearchExecutePayload(BaseModel):
     thread_id: str
     selected_titles: List[str]
     user_profile: Dict[str, Any]
+    location: Optional[str] = None
     api_key: Optional[str] = None
     model_name: Optional[str] = None
 
@@ -290,15 +311,18 @@ async def execute_search_stream(payload: SearchExecutePayload):
             "thread_id": payload.thread_id,
             "custom_api_key": payload.api_key,
             "custom_model": payload.model_name
-        }
+        },
+        "run_name": "JobSearchAgent"
     }
     
     async def event_generator():
         try:
+            search_loc = payload.location or payload.user_profile.get("personal_info", {}).get("country", "India")
+            
             yield f"data: {json.dumps({'type': 'progress', 'node': 'job_search', 'message': 'Searching job boards...'})}\n\n"
             
             # 1. Resume Phase 3 (SerpAPI)
-            async for output in job_search_graph.astream(Command(resume={"selected_titles": payload.selected_titles, "location": payload.user_profile.get("personal_info", {}).get("country", "India")}), config):
+            async for output in job_search_graph.astream(Command(resume={"selected_titles": payload.selected_titles, "location": search_loc}), config):
                 for node_name, state_update in output.items():
                     yield f"data: {json.dumps({'type': 'progress', 'node': node_name})}\n\n"
             
@@ -323,9 +347,10 @@ async def execute_search_stream(payload: SearchExecutePayload):
                     "thread_id": str(uuid.uuid4()),
                     "custom_api_key": payload.api_key,
                     "custom_model": payload.model_name
-                }
+                },
+                "run_name": "JDAnalyzerAgent"
             }
-            jd_initial = {"raw_jobs": job_objects, "user_profile": payload.user_profile}
+            jd_initial = {"raw_jobs": job_objects, "user_profile": payload.user_profile, "search_location": search_loc}
             
             async for output in jd_graph.astream(jd_initial, jd_config):
                 for node_name, state_update in output.items():
@@ -345,12 +370,14 @@ async def execute_search_stream(payload: SearchExecutePayload):
                     "thread_id": str(uuid.uuid4()),
                     "custom_api_key": payload.api_key,
                     "custom_model": payload.model_name
-                }
+                },
+                "run_name": "MatchingAgent"
             }
             match_initial = {
                 "unique_jobs": unique_jobs,
                 "extracted_requirements": extracted_reqs,
-                "user_profile": payload.user_profile
+                "user_profile": payload.user_profile,
+                "search_location": search_loc
             }
             
             async for output in match_graph.astream(match_initial, match_config):
@@ -365,6 +392,9 @@ async def execute_search_stream(payload: SearchExecutePayload):
             
             yield f"data: {json.dumps({'type': 'complete', 'matched_jobs': results, 'dropped_jobs': dropped_results})}\n\n"
             
+        except asyncio.CancelledError:
+            print(f"Client disconnected during search stream (thread: {payload.thread_id})")
+            raise
         except Exception as e:
             yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
             

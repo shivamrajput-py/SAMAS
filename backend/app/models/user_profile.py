@@ -1,4 +1,4 @@
-﻿"""
+"""
 User Profile Schema â€” The heart of SAMAS's data model.
 
 This module defines TWO layers of schemas:
@@ -189,7 +189,7 @@ class ExtractedSkillEntry(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def coerce_category(cls, data: Any) -> Any:
+    def coerce_fields(cls, data: Any) -> Any:
         if isinstance(data, dict):
             cat = data.get("category")
             if isinstance(cat, str):
@@ -197,6 +197,16 @@ class ExtractedSkillEntry(BaseModel):
                     SkillCategory(cat)
                 except ValueError:
                     data["category"] = "other"
+            elif not cat:
+                data["category"] = "other"
+                
+            pd = data.get("parent_domain")
+            if not pd or not isinstance(pd, str):
+                data["parent_domain"] = "Unknown"
+                
+            name = data.get("name")
+            if not name or not isinstance(name, str):
+                data["name"] = "Unknown Skill"
         return data
 
 

@@ -268,7 +268,8 @@ async def generate_questions_node(state: InterviewState, config: RunnableConfig)
             messages, 
             label="Question Gen",
             custom_api_key=custom_api_key,
-            custom_model=custom_model
+            custom_model=custom_model,
+            config=config
         )
         questions = result["data"]
         
@@ -482,7 +483,8 @@ async def evaluate_answers_node(state: InterviewState, config: RunnableConfig) -
             messages, 
             label="Evaluator",
             custom_api_key=custom_api_key,
-            custom_model=custom_model
+            custom_model=custom_model,
+            config=config
         )
         evaluations = result["data"]
         
