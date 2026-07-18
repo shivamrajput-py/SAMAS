@@ -1,6 +1,6 @@
 <div align="center">
   
-# 🌌 SAMAS
+# SAMAS
 https://samas-pi.vercel.app/
 
 An Autonomous AI Multi-Agent Pipeline that optimizes the job search process by understanding your technical profile, assessing your skills through an interactive AI interview, and autonomously hunting, filtering, and hybrid-matching you with targeted jobs.
@@ -15,11 +15,11 @@ An Autonomous AI Multi-Agent Pipeline that optimizes the job search process by u
 
 ---
 
-## 🚀 Overview
+## Overview
 
 **SAMAS** is a multi-agent LLM orchestration system built with **LangGraph** that acts as a personal technical recruiter. It focuses on precision matching and token optimization by combining structured LLM extraction with traditional search algorithms.
 
-### 🌟 Key Features
+### Key Features
 - **Intelligent Resume Parsing (PRISM):** Extracts skill matrices and career timelines from raw PDFs. Uses **Guardrails AI** (`Guard.from_pydantic()`) to strictly enforce JSON schema integrity on the LLM output.
 - **Dynamic AI Interview (LUCID):** An LLM-as-a-judge system dynamically generates technical questions based on your claimed skills, evaluating your answers to adjust your confidence vector.
 - **Targeted Job Sweeper (RADAR):** Spawns parallel workers to scrape highly targeted job listings via SerpAPI based on multi-query strategies.
@@ -30,7 +30,7 @@ An Autonomous AI Multi-Agent Pipeline that optimizes the job search process by u
 
 ---
 
-## 🏗️ Agentic Architecture
+## Agentic Architecture
 
 The system utilizes a directed acyclic graph (DAG) via **LangGraph** to orchestrate five distinct autonomous agents.
 
@@ -71,7 +71,7 @@ SAMAS balances **High Precision** with **Low API Cost**.
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **Framework:** Next.js (React 18)
@@ -93,7 +93,7 @@ SAMAS balances **High Precision** with **Low API Cost**.
 
 ---
 
-## ⚙️ Local Setup & Installation
+## Local Setup & Installation
 
 ### Prerequisites
 You will need API keys for:
@@ -149,5 +149,5 @@ Visit `http://localhost:3000` in your browser.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 Contributions are welcome! Please feel free to submit a Pull Request. Note: A formal open-source license will be added shortly.
