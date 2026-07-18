@@ -1,6 +1,6 @@
 <div align="center">
   
-#  SAMAS (Strategic Agentic Matching & Assessment System)
+#  SAMAS
 https://samas-pi.vercel.app/
 
 An Enterprise-Grade, Autonomous AI Multi-Agent Pipeline that revolutionizes the job search process by deeply understanding your technical profile, assessing your skills through an interactive AI interview, and autonomously hunting, filtering, and hybrid-matching you with the perfect jobs.
