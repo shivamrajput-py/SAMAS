@@ -3,7 +3,7 @@
 #  SAMAS
 https://samas-pi.vercel.app/
 
-An Enterprise-Grade, Autonomous AI Multi-Agent Pipeline that revolutionizes the job search process by deeply understanding your technical profile, assessing your skills through an interactive AI interview, and autonomously hunting, filtering, and hybrid-matching you with the perfect jobs.
+An Autonomous AI Multi-Agent Pipeline that optimizes the job search process by understanding your technical profile, assessing your skills through an interactive AI interview, and autonomously hunting, filtering, and hybrid-matching you with targeted jobs.
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
@@ -17,16 +17,16 @@ An Enterprise-Grade, Autonomous AI Multi-Agent Pipeline that revolutionizes the 
 
 ##  Overview
 
-**SAMAS** is not just another job board scraper. It is a highly sophisticated, multi-agent LLM orchestration system built with **LangGraph** that acts as a personal technical recruiter. It guarantees precision, eliminates AI hallucinations via strict guardrails, and optimizes token costs using a sophisticated filtering funnel.
+**SAMAS** is a multi-agent LLM orchestration system built with **LangGraph** that acts as a personal technical recruiter. It focuses on precision matching and token optimization by combining structured LLM extraction with traditional search algorithms.
 
 ###  Key Features
-- **Intelligent Resume Parsing (PRISM):** Extracts dense skill matrices and career timelines from raw PDFs. Protected by **Guardrails AI** to strictly enforce JSON schemas and prevent prompt injections.
-- **Dynamic AI Interview (LUCID):** An LLM-as-a-judge system dynamically generates technical questions based *strictly* on your claimed skills, evaluating your answers to adjust your confidence vector.
-- **Autonomous Job Sweeper (RADAR):** Spawns asynchronous, parallel workers to scrape global job boards (via SerpAPI) based on multi-query strategies.
-- **Deep Analyst (CIPHER):** Employs **Local BM25 Pre-filtering** to instantly drop the bottom 25% of irrelevant jobs (saving LLM tokens), detects "ghost jobs", and extracts structured JD requirements.
+- **Intelligent Resume Parsing (PRISM):** Extracts skill matrices and career timelines from raw PDFs. Uses **Guardrails AI** (`Guard.from_pydantic()`) to strictly enforce JSON schema integrity on the LLM output.
+- **Dynamic AI Interview (LUCID):** An LLM-as-a-judge system dynamically generates technical questions based on your claimed skills, evaluating your answers to adjust your confidence vector.
+- **Targeted Job Sweeper (RADAR):** Spawns parallel workers to scrape highly targeted job listings via SerpAPI based on multi-query strategies.
+- **Deep Analyst (CIPHER):** Employs **Local BM25 Pre-filtering** to drop the bottom 25% of irrelevant jobs right on the CPU (saving LLM tokens), before extracting structured JD requirements.
 - **Hybrid Matching Engine (KAIROS):** Embeds both your profile and the JDs into **Pinecone** using Dense Vectors (Semantic meaning via OpenAI) and Sparse Vectors (Exact Keyword matches via BM25/SPLADE). Performs an `alpha=0.5` balanced hybrid search for pinpoint accuracy.
-- **Enterprise Observability:** Fully instrumented with **LangSmith** for real-time tracing of agent reasoning, latency, and token consumption.
-- **CI/CD Evaluations:** Unit tested with **DeepEval** to programmatically score LLM Faithfulness and Answer Relevancy.
+- **Observability:** Instrumented with **LangSmith** for real-time tracing of agent reasoning and token consumption.
+- **CI/CD Evaluations:** Designed to be unit tested with **DeepEval** to score LLM Faithfulness and Answer Relevancy (Note: testing framework setup is ongoing).
 
 ---
 
@@ -46,14 +46,14 @@ graph TD
     LUCID --> |Adjusts Skill Vectors| RADAR
     
     subgraph Phase 2: Autonomous Hunt
-        RADAR[RADAR Agent<br/>Global Job Sweep] --> CIPHER
+        RADAR[RADAR Agent<br/>Targeted Job Sweep] --> CIPHER
         CIPHER[CIPHER Agent<br/>BM25 Pre-filter & JD Analysis]
     end
     
     CIPHER --> KAIROS
     
     subgraph Phase 3: Hybrid Resolution
-        KAIROS[KAIROS Agent<br/>Pinecone Hybrid Search] --> Output([Final Curated Job Matches])
+        KAIROS[KAIROS Agent<br/>Pinecone Hybrid Search] --> Output([Ranked Job Matches])
     end
 
     %% Architecture Details
@@ -62,16 +62,16 @@ graph TD
 ```
 
 ### The Filtering Funnel Strategy
-SAMAS is explicitly engineered to balance **High Precision** with **Low API Cost**.
-1. **Raw Scraping:** Grabs 100+ jobs via SerpAPI.
-2. **Deep Deduplication (Free):** Exact title/company hashing.
-3. **BM25 Pre-filtering (Free):** CPU-bound `rank-bm25` drops the bottom 25% of jobs instantly.
-4. **LLM Extraction (Expensive):** Only the highest potential jobs are sent to the LLM for deep analysis.
-5. **Pinecone Hybrid Search (Fast):** Resolves the final top 5 matches combining semantic meaning and keyword necessity.
+SAMAS balances **High Precision** with **Low API Cost**.
+1. **Targeted Scraping:** Grabs up to 25 highly relevant jobs per query via SerpAPI.
+2. **Deep Deduplication:** Exact title/company hashing done early in the pipeline.
+3. **BM25 Pre-filtering:** CPU-bound `rank-bm25` drops the bottom 25% of jobs instantly.
+4. **LLM Extraction:** Only the highest potential jobs are sent to the LLM for deep analysis.
+5. **Pinecone Hybrid Search:** Ranks the final matches combining semantic meaning and keyword necessity.
 
 ---
 
-##  Tech Stack
+## 💻 Tech Stack
 
 ### Frontend
 - **Framework:** Next.js (React 18)
@@ -86,27 +86,25 @@ SAMAS is explicitly engineered to balance **High Precision** with **Low API Cost
 - **Keyword Search:** `rank-bm25`
 - **Scraping:** SerpAPI
 
-### Enterprise & MLOps
-- **JSON Security:** Guardrails AI (`Guard.from_pydantic()`)
+### MLOps
+- **JSON Security:** Guardrails AI 
 - **Observability & Tracing:** LangSmith
-- **LLM Evaluations:** DeepEval (FaithfulnessMetric, AnswerRelevancyMetric)
-- **Testing:** Pytest
+- **LLM Evaluations:** DeepEval
 
 ---
 
-##  Local Setup & Installation
+## ⚙️ Local Setup & Installation
 
 ### Prerequisites
 You will need API keys for:
 - [OpenRouter](https://openrouter.ai/) (or OpenAI/Anthropic)
 - [Pinecone](https://www.pinecone.io/)
-- [LangSmith](https://smith.langchain.com/)
 - [SerpAPI](https://serpapi.com/)
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/samas.git
-cd samas
+git clone https://github.com/shivamrajput-py/SAMAS.git
+cd SAMAS
 ```
 
 ### 2. Backend Setup
@@ -142,11 +140,6 @@ cd ../frontend
 npm install
 ```
 
-Create a `.env.local` file in the `frontend/` directory (Optional since Next.js rewrites handle this):
-```env
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
-```
-
 Run the frontend server:
 ```bash
 npm run dev
@@ -156,19 +149,5 @@ Visit `http://localhost:3000` in your browser.
 
 ---
 
-##  Running LLM Evaluations
-
-To verify the mathematical accuracy of the agents without hallucination, run the DeepEval test suite:
-```bash
-cd backend
-pytest tests/test_evals.py
-```
-*(Note: Requires `OPENAI_API_KEY` to be set in `.env` as DeepEval uses GPT-4 as the judge model).*
-
----
-
-##  Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-##  License
-This project is licensed under the MIT License.
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request. Note: A formal open-source license will be added shortly.
